@@ -11,14 +11,12 @@ exports.handler = async (event) => {
     'Content-Type': 'application/json'
   };
 
-  // OPTIONSプリフライト対応
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers, body: '' };
   }
 
   try {
     if (event.httpMethod === 'GET') {
-      // Gistからデータ読み込み
       const res = await fetch(GIST_URL, {
         headers: {
           'Authorization': 'Bearer ' + GIST_TOKEN,
@@ -32,7 +30,6 @@ exports.handler = async (event) => {
       return { statusCode: 200, headers, body: content };
 
     } else if (event.httpMethod === 'PATCH') {
-      // Gistにデータ保存
       const data = JSON.parse(event.body);
       const res = await fetch(GIST_URL, {
         method: 'PATCH',
