@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>【 KOU-GOAL 】目標管理 </title>
+<title>こうの目標管理システム</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -28,7 +28,7 @@
   --hdr-bg:     #0f2044;
   --body: 'Noto Sans JP', sans-serif;
   --mono: 'Space Mono', monospace;
-  --font-size-base: 18px;
+  --font-size-base: 20px;
 }
 /* ===== テーマ定義 ===== */
 [data-theme="navy"] {
@@ -75,8 +75,8 @@
 .settings-overlay.open{display:flex;}
 .settings-drawer{background:var(--surface);border-left:1px solid var(--border);width:320px;max-width:92vw;height:100vh;overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;gap:0;}
 .set-section{margin-bottom:24px;}
-.set-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
-.set-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:13px;}
+.set-section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:15px;}
 .font-btns{display:flex;gap:4px;}
 .font-btn{width:34px;height:30px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--text);cursor:pointer;font-family:var(--body);font-weight:600;transition:all .2s;display:flex;align-items:center;justify-content:center;}
 .font-btn.active,.font-btn:hover{border-color:var(--accent);color:var(--accent);}
@@ -85,8 +85,8 @@
 .theme-swatch:hover{transform:scale(1.06);}
 .theme-swatch.active{border-color:var(--accent);}
 .theme-swatch-bar{height:10px;width:100%;position:absolute;bottom:0;}
-.swatch-label{font-size:9px;color:#fff;text-align:center;width:100%;position:absolute;top:4px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.6);}
-.backup-info{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px;}
+.swatch-label{font-size:11px;color:#fff;text-align:center;width:100%;position:absolute;top:4px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.6);}
+.backup-info{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:4px;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{background:var(--bg);}
 body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:100vh;font-size:var(--font-size-base);line-height:1.6;}
@@ -98,15 +98,15 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 
 /* HEADER */
 .hdr{background:var(--hdr-bg,var(--surface));border-bottom:1px solid var(--border);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;}
-.hdr-title{font-family:var(--mono);font-size:14px;color:var(--hdr-accent,var(--accent));letter-spacing:0.06em;}
+.hdr-title{font-family:var(--mono);font-size:21px;color:var(--hdr-accent,var(--accent));letter-spacing:0.06em;}
 .hdr-title span{color:var(--hdr-muted,var(--muted));font-weight:400;}
-.hdr-date{font-family:var(--mono);font-size:11px;color:var(--hdr-muted,var(--muted));}
+.hdr-date{font-family:var(--mono);font-size:13px;color:var(--hdr-muted,var(--muted));}
 
 /* TABS */
 .tab-nav{background:var(--hdr-bg,var(--surface));border-bottom:1px solid var(--border);display:flex;padding:0 20px;overflow-x:auto;gap:0;position:fixed;left:0;right:0;z-index:99;}
 .tab-nav::-webkit-scrollbar{display:none;}
 .tab-nav{-ms-overflow-style:none;scrollbar-width:none;}
-.tab-btn{padding:12px 18px;background:none;border:none;border-bottom:2px solid transparent;color:var(--hdr-muted,var(--muted));cursor:pointer;font-family:var(--body);font-size:13px;font-weight:500;white-space:nowrap;transition:all .2s;}
+.tab-btn{padding:12px 18px;background:none;border:none;border-bottom:2px solid transparent;color:var(--hdr-muted,var(--muted));cursor:pointer;font-family:var(--body);font-size:20px;font-weight:500;white-space:nowrap;transition:all .2s;}
 .tab-btn:hover{color:var(--hdr-text,var(--text));}
 .tab-btn.active{color:var(--hdr-accent,var(--accent));border-bottom-color:var(--hdr-accent,var(--accent));}
 
@@ -122,15 +122,15 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 
 /* SECTION */
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.sec-title{font-size:17px;font-weight:700;color:var(--text);}
-.sec-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.sec-title{font-size:24px;font-weight:700;color:var(--text);}
+.sec-sub{font-size:14px;color:var(--muted);margin-top:2px;}
 
 /* BUTTONS */
-.btn{padding:8px 16px;border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:6px;cursor:pointer;font-size:13px;font-family:var(--body);transition:all .2s;white-space:nowrap;}
+.btn{padding:8px 16px;border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:6px;cursor:pointer;font-size:15px;font-family:var(--body);transition:all .2s;white-space:nowrap;}
 .btn:hover{border-color:var(--accent);color:var(--accent);}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
 .btn-primary:hover{background:var(--accent-l);border-color:var(--accent-l);color:#fff;}
-.btn-sm{padding:4px 10px;font-size:12px;}
+.btn-sm{padding:4px 10px;font-size:14px;}
 .btn-danger{border-color:var(--danger);color:var(--danger);}
 .btn-danger:hover{background:var(--danger);color:#fff;}
 
@@ -142,22 +142,22 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 .g-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;transition:border-color .2s;position:relative;}
 .g-card:hover{border-color:var(--border);}
 .g-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:10px;}
-.g-title{font-size:14px;font-weight:700;line-height:1.4;flex:1;}
-.badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap;}
+.g-title{font-size:16px;font-weight:700;line-height:1.4;flex:1;}
+.badge{padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;white-space:nowrap;}
 .b-3m{background:rgba(82,168,106,.14);color:var(--success);border:1px solid rgba(82,168,106,.3);}
 .b-6m{background:rgba(90,135,204,.14);color:var(--info);border:1px solid rgba(90,135,204,.3);}
 .b-1y{background:rgba(201,122,47,.14);color:var(--accent);border:1px solid rgba(201,122,47,.3);}
 .b-other{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
-.g-desc{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5;}
-.g-meta{display:flex;gap:14px;font-size:11px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+.g-desc{font-size:14px;color:var(--muted);margin-bottom:12px;line-height:1.5;}
+.g-meta{display:flex;gap:14px;font-size:13px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
 .prog-wrap{margin-bottom:12px;}
-.prog-hdr{display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px;}
+.prog-hdr{display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px;}
 .prog-bar{height:4px;background:var(--border);border-radius:4px;overflow:hidden;}
 .prog-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .5s;}
 .ms-list{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
-.ms-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);cursor:pointer;user-select:none;}
+.ms-item{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--muted);cursor:pointer;user-select:none;}
 .ms-item.done{color:var(--success);text-decoration:line-through;}
-.ms-chk{width:13px;height:13px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;}
+.ms-chk{width:13px;height:13px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;}
 .ms-item.done .ms-chk{background:var(--success);border-color:var(--success);color:#fff;}
 .g-btns{display:flex;gap:8px;justify-content:flex-end;}
 
@@ -165,12 +165,12 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 .act-item{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;transition:border-color .2s;}
 .act-item:hover{border-color:var(--border);}
 .act-item.done{opacity:.45;}
-.act-chk{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px;}
+.act-chk{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:14px;}
 .act-item.done .act-chk{background:var(--success);border-color:var(--success);color:#fff;}
-.act-txt{flex:1;font-size:14px;font-weight:500;}
+.act-txt{flex:1;font-size:16px;font-weight:500;}
 .act-item.done .act-txt{text-decoration:line-through;}
-.act-note{font-size:11px;color:var(--muted);}
-.cat-badge{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;}
+.act-note{font-size:13px;color:var(--muted);}
+.cat-badge{padding:2px 8px;border-radius:4px;font-size:13px;font-weight:500;}
 .cb-仕事{background:rgba(201,122,47,.13);color:var(--accent);}
 .cb-副業{background:rgba(90,135,204,.13);color:var(--info);}
 .cb-健康{background:rgba(82,168,106,.13);color:var(--success);}
@@ -179,15 +179,15 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 
 /* SUB TABS */
 .stab-nav{display:flex;gap:6px;margin-bottom:16px;}
-.stab-btn{padding:6px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:12px;font-family:var(--body);transition:all .2s;}
+.stab-btn{padding:6px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:14px;font-family:var(--body);transition:all .2s;}
 .stab-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
 
 /* FINANCE */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;}
-.stat-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;}
-.stat-val{font-family:var(--mono);font-size:22px;font-weight:700;margin-bottom:4px;}
-.stat-sub{font-size:12px;color:var(--muted);}
+.stat-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;}
+.stat-val{font-family:var(--mono);font-size:24px;font-weight:700;margin-bottom:4px;}
+.stat-sub{font-size:14px;color:var(--muted);}
 /* 貯金ページの3列は高さを揃える */
 #savingsStatTotal .stat-card,
 #savingsStatMonth .stat-card,
@@ -196,9 +196,9 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
   box-sizing:border-box;
   font-size:var(--font-size-base);
 }
-.stat-label{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
-.stat-val{font-family:var(--mono);font-size:22px;font-weight:700;}
-.stat-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.stat-label{font-size:13px;color:var(--muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.stat-val{font-family:var(--mono);font-size:24px;font-weight:700;}
+.stat-sub{font-size:13px;color:var(--muted);margin-top:4px;}
 .fin-rec{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;}
 .rec-amt{font-family:var(--mono);font-weight:700;}
 .amt-in{color:var(--success);}
@@ -206,10 +206,10 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 
 /* REVIEW */
 .rev-entry{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;}
-.rev-date{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:6px;}
+.rev-date{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:6px;}
 .rev-section{margin-bottom:10px;}
-.rev-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
-.rev-text{font-size:13px;line-height:1.7;white-space:pre-wrap;}
+.rev-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.rev-text{font-size:15px;line-height:1.7;white-space:pre-wrap;}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000;align-items:center;justify-content:center;padding:20px;}
@@ -217,14 +217,14 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;width:500px;max-width:100%;max-height:85vh;overflow-y:auto;}
 .modal-lg{width:600px;}
 .modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.modal-title{font-size:15px;font-weight:700;}
-.modal-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:22px;line-height:1;transition:color .2s;}
+.modal-title{font-size:17px;font-weight:700;}
+.modal-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:24px;line-height:1;transition:color .2s;}
 .modal-close:hover{color:var(--text);}
 
 /* FORM */
 .fg{margin-bottom:14px;}
-.fl{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
-.fi,.fs,.ft{width:100%;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--card-text,var(--text));font-family:var(--body);font-size:13px;transition:border-color .2s;}
+.fl{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+.fi,.fs,.ft{width:100%;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--card-text,var(--text));font-family:var(--body);font-size:15px;transition:border-color .2s;}
 .fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--accent);}
 .ft{min-height:75px;resize:vertical;}
 .fs option{background:var(--surface2);}
@@ -236,31 +236,31 @@ input[type="range"]{width:100%;accent-color:var(--accent);cursor:pointer;}
 .chat-msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;}
 .chat-msg{display:flex;gap:10px;max-width:88%;}
 .chat-msg.user{align-self:flex-end;flex-direction:row-reverse;}
-.chat-av{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.chat-av{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .chat-msg.assistant .chat-av{background:var(--accent-dim);}
 .chat-msg.user .chat-av{background:rgba(90,135,204,.14);}
-.chat-bbl{padding:11px 15px;border-radius:10px;font-size:13px;line-height:1.65;}
+.chat-bbl{padding:11px 15px;border-radius:10px;font-size:15px;line-height:1.65;}
 .chat-msg.assistant .chat-bbl{background:var(--surface2);border:1px solid var(--border);}
 .chat-msg.user .chat-bbl{background:var(--accent-dim);border:1px solid rgba(201,122,47,.25);}
 .chat-input-area{padding:14px 16px;border-top:1px solid var(--border);display:flex;gap:10px;}
-.chat-inp{flex:1;padding:9px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--body);font-size:13px;resize:none;transition:border-color .2s;}
+.chat-inp{flex:1;padding:9px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--body);font-size:15px;resize:none;transition:border-color .2s;}
 .chat-inp:focus{outline:none;border-color:var(--accent);}
-.api-notice{padding:12px 16px;background:rgba(201,122,47,.1);border:1px solid rgba(201,122,47,.25);border-radius:8px;margin-bottom:14px;font-size:13px;color:var(--muted);}
+.api-notice{padding:12px 16px;background:rgba(201,122,47,.1);border:1px solid rgba(201,122,47,.25);border-radius:8px;margin-bottom:14px;font-size:15px;color:var(--muted);}
 
 /* MISC */
 hr.div{border:none;border-top:1px solid var(--border);margin:20px 0;}
 .empty{text-align:center;padding:48px 20px;color:var(--muted);}
-.empty .ico{font-size:36px;margin-bottom:10px;}
+.empty .ico{font-size:38px;margin-bottom:10px;}
 
 input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{background:var(--surface2) !important;-webkit-box-shadow:0 0 0px 1000px var(--surface2) inset !important;}
 @keyframes blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}
-.dots span{animation:blink 1.2s infinite;font-size:18px;}
+.dots span{animation:blink 1.2s infinite;font-size:20px;}
 .dots span:nth-child(2){animation-delay:.25s;}
 .dots span:nth-child(3){animation-delay:.5s;}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 /* EXPENSE CHECKBOX */
 .exp-chk{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:transparent;}
-.exp-chk.checked{background:var(--success);border-color:var(--success);color:#fff;font-size:11px;}
+.exp-chk.checked{background:var(--success);border-color:var(--success);color:#fff;font-size:13px;}
 .exp-chk:hover{border-color:var(--success);}
 tr.exp-paid td{opacity:0.45;text-decoration:line-through;}
 tr.exp-paid td:last-child{text-decoration:none;}
@@ -270,13 +270,13 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 .wish-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s;}
 .wish-card:hover{border-color:var(--accent);}
 .wish-card.bought{opacity:0.5;}
-.wish-stars{color:#f5a623;letter-spacing:2px;font-size:16px;}
+.wish-stars{color:#f5a623;letter-spacing:2px;font-size:18px;}
 .wish-stars .off{color:var(--border);}
-.wish-price{font-family:var(--mono);font-weight:700;font-size:18px;color:var(--accent);}
-.wish-link{font-size:12px;color:var(--info);word-break:break-all;}
+.wish-price{font-family:var(--mono);font-weight:700;font-size:20px;color:var(--accent);}
+.wish-link{font-size:14px;color:var(--info);word-break:break-all;}
 .debt-table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow-x:auto;}
-.debt-table{width:100%;border-collapse:collapse;font-size:12px;}
-.debt-table th{background:var(--surface2);color:var(--card-muted,var(--muted));font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;}
+.debt-table{width:100%;border-collapse:collapse;font-size:14px;}
+.debt-table th{background:var(--surface2);color:var(--card-muted,var(--muted));font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;}
 .debt-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--card-text,var(--text));white-space:nowrap;}
 .debt-table tr:last-child td{border-bottom:none;}
 .debt-table tr:hover td{background:rgba(255,255,255,0.04);}
@@ -295,7 +295,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   .hdr{padding:10px 14px;}
   .hdr-title span{display:none;}
   .hdr-date{display:none;}
-  .tab-btn{padding:10px 12px;font-size:12px;}
+  .tab-btn{padding:10px 12px;font-size:14px;}
 
   /* メインレイアウト */
   .main{padding:16px 12px;}
@@ -320,14 +320,14 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     align-items:center;
     padding:5px 4px;
     border-bottom:1px solid var(--border);
-    font-size:13px;
+    font-size:15px;
     text-align:left;
   }
   .debt-table tbody td:last-child{border-bottom:none;}
   .debt-table tbody td:first-child{display:none;} /* drag handle非表示 */
   .debt-table tbody td::before{
     content:attr(data-label);
-    font-size:11px;
+    font-size:13px;
     color:var(--muted);
     font-weight:700;
     min-width:80px;
@@ -362,7 +362,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   }
   #savingsStatTotal .stat-val,
   #savingsStatMonth .stat-val{
-    font-size:16px !important;
+    font-size:18px !important;
   }
 
   /* 支出テーブル：モバイルでは1行コンパクト表示 */
@@ -386,40 +386,40 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     border-bottom:none !important;
     padding:0 !important;
     flex-shrink:0;
-    font-size:12px;
+    font-size:14px;
   }
   .expense-table tbody td::before{display:none !important;}
   /* チェックボックス */
   .expense-table tbody td:nth-child(2){flex-shrink:0;}
   /* 日付 */
-  .expense-table tbody td:nth-child(3){flex-shrink:0;font-size:11px;min-width:24px;}
+  .expense-table tbody td:nth-child(3){flex-shrink:0;font-size:13px;min-width:24px;}
   /* 分類バッジ */
   .expense-table tbody td:nth-child(4){flex-shrink:0;}
   /* 項目名：余白を全て使って省略 */
   .expense-table tbody td:nth-child(5){flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block !important;}
   /* 金額 */
-  .expense-table tbody td:nth-child(6){flex-shrink:0;font-size:12px;white-space:nowrap;}
+  .expense-table tbody td:nth-child(6){flex-shrink:0;font-size:14px;white-space:nowrap;}
   /* 操作ボタン */
   .expense-table tbody td:nth-child(7){flex-shrink:0;}
-  .expense-table tbody td:nth-child(7) .btn{padding:3px 7px;font-size:11px;}
+  .expense-table tbody td:nth-child(7) .btn{padding:3px 7px;font-size:13px;}
   /* グループヘッダー行はfull-width */
   .expense-table tbody tr > td[colspan]{display:block !important;width:100%;flex:unset;}
 }
-.month-nav-title{font-family:var(--mono);font-size:16px;font-weight:700;}
-.month-nav-btn{background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;border-radius:6px;padding:4px 14px;font-size:16px;transition:all .2s;}
+.month-nav-title{font-family:var(--mono);font-size:18px;font-weight:700;}
+.month-nav-btn{background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;border-radius:6px;padding:4px 14px;font-size:18px;transition:all .2s;}
 .month-nav-btn:hover{border-color:var(--accent);color:var(--accent);}
 .rec-row{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:5px;transition:border-color .2s;min-height:0;}
 .rec-row:hover{border-color:var(--accent);}
-.rec-date{font-family:var(--mono);font-size:11px;color:var(--muted);width:36px;flex-shrink:0;text-align:center;}
-.rec-name{flex:1;font-size:13px;font-weight:500;overflow:hidden;min-width:0;}
-.rec-cat{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600;white-space:nowrap;}
-.rec-amt{font-family:var(--mono);font-weight:700;font-size:14px;text-align:right;min-width:88px;}
+.rec-date{font-family:var(--mono);font-size:13px;color:var(--muted);width:36px;flex-shrink:0;text-align:center;}
+.rec-name{flex:1;font-size:15px;font-weight:500;overflow:hidden;min-width:0;}
+.rec-cat{font-size:12px;padding:2px 7px;border-radius:4px;font-weight:600;white-space:nowrap;}
+.rec-amt{font-family:var(--mono);font-weight:700;font-size:16px;text-align:right;min-width:88px;}
 .filter-row{display:flex;gap:6px;margin-bottom:16px;}
 .trend-wrap{display:flex;align-items:flex-end;gap:4px;height:70px;}
 .trend-grp{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;}
 .trend-bars{display:flex;gap:2px;align-items:flex-end;height:52px;}
 .trend-bar{width:10px;border-radius:2px 2px 0 0;min-height:2px;}
-.trend-lbl{font-size:9px;color:var(--muted);font-family:var(--mono);}
+.trend-lbl{font-size:11px;color:var(--muted);font-family:var(--mono);}
 .bkdn-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);}
 .bkdn-row:last-child{border-bottom:none;}
 .bkdn-bar{height:3px;background:var(--border);border-radius:3px;margin-top:3px;overflow:hidden;}
@@ -427,22 +427,22 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .dragging{opacity:0.4;cursor:grabbing;}
 .drag-over{border-top:2px solid var(--accent) !important;}
-.drag-handle{cursor:grab;color:var(--muted);padding:0 4px;font-size:16px;user-select:none;}
+.drag-handle{cursor:grab;color:var(--muted);padding:0 4px;font-size:18px;user-select:none;}
 .drag-handle:hover{color:var(--accent);}
 
 .mp-wrap{position:relative;}
-.mp-trigger{width:100%;text-align:left;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);cursor:pointer;font-family:var(--body);font-size:13px;display:flex;justify-content:space-between;align-items:center;transition:border-color .2s;}
+.mp-trigger{width:100%;text-align:left;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);cursor:pointer;font-family:var(--body);font-size:15px;display:flex;justify-content:space-between;align-items:center;transition:border-color .2s;}
 .mp-trigger:hover,.mp-trigger.open{border-color:var(--accent);}
 .mp-panel{background:var(--surface);border:1px solid var(--accent);border-radius:10px;padding:14px;margin-top:6px;}
 .mp-year-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.mp-yr-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:6px;width:34px;height:34px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.mp-yr-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:6px;width:34px;height:34px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .mp-yr-btn:hover{border-color:var(--accent);color:var(--accent);}
-.mp-yr-val{font-family:var(--mono);font-weight:700;font-size:16px;}
+.mp-yr-val{font-family:var(--mono);font-weight:700;font-size:18px;}
 .mp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:10px;}
-.mp-mo{padding:7px 2px;text-align:center;background:var(--surface2);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:12px;color:var(--text);transition:all .2s;}
+.mp-mo{padding:7px 2px;text-align:center;background:var(--surface2);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;color:var(--text);transition:all .2s;}
 .mp-mo:hover{border-color:var(--accent);color:var(--accent);}
 .mp-mo.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;}
-.mp-clear{font-size:11px;color:var(--muted);text-align:center;cursor:pointer;padding:6px 0 0;border-top:1px solid var(--border);}
+.mp-clear{font-size:13px;color:var(--muted);text-align:center;cursor:pointer;padding:6px 0 0;border-top:1px solid var(--border);}
 .mp-clear:hover{color:var(--danger);}
 </style>
 </head>
@@ -454,7 +454,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   </div>
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="hdr-date" id="hdrDate"></div>
-    <button class="btn btn-sm" onclick="openSettings()" title="設定" style="font-size:17px;padding:5px 11px;">⚙</button>
+    <button class="btn btn-sm" onclick="openSettings()" title="設定" style="font-size:19px;padding:5px 11px;">⚙</button>
   </div>
 </header>
 
@@ -481,14 +481,13 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   <!-- MONTHLY -->
   <div id="tab-monthly" class="tab-panel">
     <div class="sec-hdr">
-      <div style="display:flex;align-items:center;gap:12px;">
-        <div class="sec-title">月間収支</div>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <button class="month-nav-btn" onclick="shiftMonth(-1)" style="padding:2px 10px;font-size:14px;">‹</button>
-          <span id="mthNavTitle" style="font-family:var(--mono);font-size:14px;font-weight:700;min-width:90px;text-align:center;">—</span>
-          <button class="month-nav-btn" onclick="shiftMonth(1)" style="padding:2px 10px;font-size:14px;">›</button>
-        </div>
-      </div>
+      <div><div class="sec-title">月間収支</div></div>
+    </div>
+    <!-- 月ナビゲーター（サマリーの上） -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;">
+      <button class="month-nav-btn" onclick="shiftMonth(-1)" style="padding:4px 16px;font-size:21px;">‹</button>
+      <span id="mthNavTitle" style="font-family:var(--mono);font-size:21px;font-weight:700;min-width:120px;text-align:center;">—</span>
+      <button class="month-nav-btn" onclick="shiftMonth(1)" style="padding:4px 16px;font-size:21px;">›</button>
     </div>
     <!-- summary cards -->
     <div id="mthStats" class="stats-grid" style="margin-bottom:16px;"></div>
@@ -547,27 +546,27 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 
     <!-- 返済シミュレーション -->
     <div class="card" style="margin-top:28px;">
-      <div style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:18px;letter-spacing:.04em;">📊 返済シミュレーション</div>
-      <div id="simTotalDisplay" style="font-size:13px;color:var(--muted);margin-bottom:16px;"></div>
+      <div style="font-size:16px;font-weight:700;color:var(--accent);margin-bottom:18px;letter-spacing:.04em;">📊 返済シミュレーション</div>
+      <div id="simTotalDisplay" style="font-size:15px;color:var(--muted);margin-bottom:16px;"></div>
 
       <!-- 2列レイアウト -->
       <div id="simGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
 
         <!-- 左：月額 → 返済率 -->
         <div style="background:var(--surface2);border-radius:10px;padding:18px;">
-          <div style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text);">
+          <div style="font-size:15px;font-weight:700;margin-bottom:14px;color:var(--text);">
             💰 毎月の返済額 → 返済率・完済期間
           </div>
           <div class="fg" style="margin-bottom:12px;">
             <label class="fl">毎月の返済額（円）</label>
             <input type="number" class="fi" id="simMonthly" placeholder="例：50000" oninput="calcSimA()">
           </div>
-          <div id="simResultA" style="font-size:13px;line-height:1.9;"></div>
+          <div id="simResultA" style="font-size:15px;line-height:1.9;"></div>
         </div>
 
         <!-- 右：返済率 → 月額 -->
         <div style="background:var(--surface2);border-radius:10px;padding:18px;">
-          <div style="font-size:13px;font-weight:700;margin-bottom:14px;color:var(--text);">
+          <div style="font-size:15px;font-weight:700;margin-bottom:14px;color:var(--text);">
             🎯 目標返済率 → 必要月額・期間
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
@@ -580,7 +579,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
               <input type="number" class="fi" id="simMonths" placeholder="例：24" min="1" oninput="calcSimB()">
             </div>
           </div>
-          <div id="simResultB" style="font-size:13px;line-height:1.9;"></div>
+          <div id="simResultB" style="font-size:15px;line-height:1.9;"></div>
         </div>
 
       </div>
@@ -588,7 +587,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   </div>
 
   <!-- FOOTER -->
-  <div style="text-align:center;padding:28px 16px 20px;font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;">
+  <div style="text-align:center;padding:28px 16px 20px;font-size:14px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;">
     KOU.GOAL &nbsp;|&nbsp; @manipress.App
   </div>
 
@@ -600,8 +599,8 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 <div class="settings-overlay" id="settingsOverlay" onclick="closeSettings(event)">
   <div class="settings-drawer">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-      <div style="font-size:16px;font-weight:700;">設定</div>
-      <button onclick="closeSettings()" style="background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;">×</button>
+      <div style="font-size:18px;font-weight:700;">設定</div>
+      <button onclick="closeSettings()" style="background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1;">×</button>
     </div>
 
     <!-- カラーテーマ -->
@@ -651,9 +650,9 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 <!-- CONFIRM MODAL -->
 <div class="modal-overlay" id="confirmModal" style="z-index:1200;">
   <div class="modal" style="max-width:360px;text-align:center;">
-    <div style="font-size:28px;margin-bottom:12px;">🗑️</div>
-    <div style="font-size:15px;font-weight:700;margin-bottom:8px;" id="confirmTitle">削除の確認</div>
-    <div style="font-size:13px;color:var(--card-muted,var(--muted));margin-bottom:24px;line-height:1.6;" id="confirmMsg">この項目を削除しますか？</div>
+    <div style="font-size:30px;margin-bottom:12px;">🗑️</div>
+    <div style="font-size:17px;font-weight:700;margin-bottom:8px;" id="confirmTitle">削除の確認</div>
+    <div style="font-size:15px;color:var(--card-muted,var(--muted));margin-bottom:24px;line-height:1.6;" id="confirmMsg">この項目を削除しますか？</div>
     <div style="display:flex;gap:10px;justify-content:center;">
       <button class="btn" style="min-width:90px;" onclick="closeModal('confirmModal')">キャンセル</button>
       <button class="btn btn-danger" style="min-width:90px;background:var(--danger);color:#fff;" id="confirmOkBtn">削除する</button>
@@ -690,7 +689,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     <div class="fg">
       <label class="fl">貯金の初期残高（円）</label>
       <input type="number" class="fi" id="savingsInitAmt" placeholder="0">
-      <div style="font-size:11px;color:var(--muted);margin-top:4px;">アプリ使用開始前の既存貯金額を入力してください</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">アプリ使用開始前の既存貯金額を入力してください</div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
       <button class="btn" onclick="closeModal('savingsInitModal')">キャンセル</button>
@@ -712,11 +711,11 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <div class="fg">
         <label class="fl">優先度</label>
         <div style="display:flex;gap:6px;padding:6px 0;" id="wStarRow">
-          <span class="wish-star" data-v="1" onclick="setWishStar(1)" style="font-size:26px;cursor:pointer;opacity:0.3;">★</span>
-          <span class="wish-star" data-v="2" onclick="setWishStar(2)" style="font-size:26px;cursor:pointer;opacity:0.3;">★</span>
-          <span class="wish-star" data-v="3" onclick="setWishStar(3)" style="font-size:26px;cursor:pointer;opacity:0.3;">★</span>
-          <span class="wish-star" data-v="4" onclick="setWishStar(4)" style="font-size:26px;cursor:pointer;opacity:0.3;">★</span>
-          <span class="wish-star" data-v="5" onclick="setWishStar(5)" style="font-size:26px;cursor:pointer;opacity:0.3;">★</span>
+          <span class="wish-star" data-v="1" onclick="setWishStar(1)" style="font-size:28px;cursor:pointer;opacity:0.3;">★</span>
+          <span class="wish-star" data-v="2" onclick="setWishStar(2)" style="font-size:28px;cursor:pointer;opacity:0.3;">★</span>
+          <span class="wish-star" data-v="3" onclick="setWishStar(3)" style="font-size:28px;cursor:pointer;opacity:0.3;">★</span>
+          <span class="wish-star" data-v="4" onclick="setWishStar(4)" style="font-size:28px;cursor:pointer;opacity:0.3;">★</span>
+          <span class="wish-star" data-v="5" onclick="setWishStar(5)" style="font-size:28px;cursor:pointer;opacity:0.3;">★</span>
         </div>
         <input type="hidden" id="wStars" value="3">
       </div>
@@ -880,7 +879,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       </div>
     </div>
     <!-- fixed items notice -->
-    <div id="mthFixedNotice" style="display:none;font-size:12px;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(201,122,47,.2);border-radius:6px;padding:8px 12px;margin-bottom:4px;">
+    <div id="mthFixedNotice" style="display:none;font-size:14px;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(201,122,47,.2);border-radius:6px;padding:8px 12px;margin-bottom:4px;">
       ✓ 固定設定した項目は設定期間中、毎月自動的に表示されます
     </div>
     <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
@@ -911,11 +910,11 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     </div>
     <!-- AUTO CALC PREVIEW -->
     <div id="loanCalcPreview" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:14px;display:none;">
-      <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">自動計算結果</div>
+      <div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">自動計算結果</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-        <div><div style="font-size:11px;color:var(--muted);margin-bottom:3px;">返済期間</div><div style="font-family:var(--mono);font-weight:700;color:var(--text);" id="pMonths">—</div></div>
-        <div><div style="font-size:11px;color:var(--muted);margin-bottom:3px;">完済時期</div><div style="font-family:var(--mono);font-weight:700;color:var(--info);" id="pPayoff">—</div></div>
-        <div><div style="font-size:11px;color:var(--muted);margin-bottom:3px;">利息総額</div><div style="font-family:var(--mono);font-weight:700;color:var(--danger);" id="pInterest">—</div></div>
+        <div><div style="font-size:13px;color:var(--muted);margin-bottom:3px;">返済期間</div><div style="font-family:var(--mono);font-weight:700;color:var(--text);" id="pMonths">—</div></div>
+        <div><div style="font-size:13px;color:var(--muted);margin-bottom:3px;">完済時期</div><div style="font-family:var(--mono);font-weight:700;color:var(--info);" id="pPayoff">—</div></div>
+        <div><div style="font-size:13px;color:var(--muted);margin-bottom:3px;">利息総額</div><div style="font-family:var(--mono);font-weight:700;color:var(--danger);" id="pInterest">—</div></div>
       </div>
     </div>
     <div class="fg"><label class="fl">メモ</label><textarea class="ft" id="lNote" placeholder="備考・状況など" style="min-height:55px;"></textarea></div>
@@ -1201,8 +1200,8 @@ function renderGoals() {
       </div>
       <div class="prog-wrap">
         <div class="prog-hdr">
-          <span style="font-size:11px;color:var(--muted)">進捗</span>
-          <span style="font-family:var(--mono);color:var(--accent);font-weight:700;font-size:12px">${g.progress}%</span>
+          <span style="font-size:13px;color:var(--muted)">進捗</span>
+          <span style="font-family:var(--mono);color:var(--accent);font-weight:700;font-size:14px">${g.progress}%</span>
         </div>
         <div class="prog-bar"><div class="prog-fill" style="width:${g.progress}%"></div></div>
       </div>
@@ -1346,7 +1345,7 @@ function renderSavingsGoals(grandTotal, avgMonthly) {
   const goals = db.savingsGoals || [];
   const el = document.getElementById('savingsGoalList');
   if (!goals.length) {
-    el.innerHTML = '<div style="font-size:13px;color:var(--muted);padding:12px 0;">目標未設定</div>';
+    el.innerHTML = '<div style="font-size:15px;color:var(--muted);padding:12px 0;">目標未設定</div>';
     return;
   }
   const isMob = window.innerWidth <= 640;
@@ -1368,12 +1367,12 @@ function renderSavingsGoals(grandTotal, avgMonthly) {
         return days < 30 ? 'color:var(--danger)' : days < 90 ? 'color:var(--warning)' : 'color:var(--muted)';
       })();
       return `<div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;">
-        <span style="font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700;flex-shrink:0;">¥${g.target.toLocaleString()}</span>
-        <span style="font-family:var(--mono);font-size:12px;flex-shrink:0;${deadlineColor}">${g.deadline||'—'}</span>
-        <span style="font-family:var(--mono);font-size:12px;flex-shrink:0;color:${remain<=0?'var(--success)':'var(--info)'};">${forecastStr}</span>
+        <span style="font-family:var(--mono);font-size:15px;color:var(--accent);font-weight:700;flex-shrink:0;">¥${g.target.toLocaleString()}</span>
+        <span style="font-family:var(--mono);font-size:14px;flex-shrink:0;${deadlineColor}">${g.deadline||'—'}</span>
+        <span style="font-family:var(--mono);font-size:14px;flex-shrink:0;color:${remain<=0?'var(--success)':'var(--info)'};">${forecastStr}</span>
         <div style="margin-left:auto;display:flex;gap:4px;flex-shrink:0;">
-          <button class="btn btn-sm" onclick="openSavingsGoalModal('${g.id}')" style="padding:3px 8px;font-size:12px;">編集</button>
-          <button class="btn btn-sm btn-danger" onclick="delSavingsGoal('${g.id}')" style="padding:3px 8px;font-size:12px;">削除</button>
+          <button class="btn btn-sm" onclick="openSavingsGoalModal('${g.id}')" style="padding:3px 8px;font-size:14px;">編集</button>
+          <button class="btn btn-sm btn-danger" onclick="delSavingsGoal('${g.id}')" style="padding:3px 8px;font-size:14px;">削除</button>
         </div>
       </div>`;
     }).join('');
@@ -1403,16 +1402,16 @@ function renderSavingsGoals(grandTotal, avgMonthly) {
       })();
       return `<tr style="border-bottom:1px solid var(--border);">
         <td style="padding:6px 8px 6px 0;white-space:nowrap;">
-          <div style="font-size:10px;color:var(--muted);margin-bottom:1px;">目標額</div>
-          <span style="font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:700;">¥${g.target.toLocaleString()}</span>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:1px;">目標額</div>
+          <span style="font-family:var(--mono);font-size:16px;color:var(--accent);font-weight:700;">¥${g.target.toLocaleString()}</span>
         </td>
         <td style="padding:6px 8px;white-space:nowrap;">
-          <div style="font-size:10px;color:var(--muted);margin-bottom:1px;">期限</div>
-          <span style="font-family:var(--mono);font-size:12px;${deadlineColor}">${g.deadline||'—'}</span>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:1px;">期限</div>
+          <span style="font-family:var(--mono);font-size:14px;${deadlineColor}">${g.deadline||'—'}</span>
         </td>
         <td style="padding:6px 8px;white-space:nowrap;">
-          <div style="font-size:10px;color:var(--muted);margin-bottom:1px;">達成予測</div>
-          <span style="font-family:var(--mono);font-size:12px;color:${remain<=0?'var(--success)':'var(--info)'};">${forecastStr}</span>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:1px;">達成予測</div>
+          <span style="font-family:var(--mono);font-size:14px;color:${remain<=0?'var(--success)':'var(--info)'};">${forecastStr}</span>
         </td>
         <td style="padding:6px 0 6px 8px;text-align:right;">
           <div style="display:flex;gap:4px;justify-content:flex-end;">
@@ -1436,7 +1435,12 @@ function renderSavings() {
     if (r.type !== 'expense') return;
     const mid = r.midCat || inferMidCat(r.cat) || '';
     if (mid !== '貯蓄') return;
-    if (!r.paid) return; // チェック済みのみ集計
+    if (r.fixed) {
+      // 固定項目：paid_YYYY-MM キーでその月のチェックを確認
+      if (!r['paid_' + ym]) return;
+    } else {
+      if (!r.paid) return;
+    }
     const ym = r.date ? r.date.slice(0, 7) : '';
     if (!ym) return;
     if (!byMonth[ym]) byMonth[ym] = { total: 0, items: [] };
@@ -1484,10 +1488,10 @@ function renderSavings() {
     const itemList = m.items.map(r => esc(r.name)).join('・');
     return `<tr style="${isCurrent ? 'background:var(--accent-dim);' : ''}">
       <td style="font-family:var(--mono);font-weight:700;white-space:nowrap;color:${isCurrent?'var(--accent)':''}">
-        ${y}年${parseInt(mo)}月${isCurrent ? ' <span style="font-size:10px;">← 今月</span>' : ''}
+        ${y}年${parseInt(mo)}月${isCurrent ? ' <span style="font-size:12px;">← 今月</span>' : ''}
       </td>
       <td class="mono" style="color:var(--success);text-align:right;">+¥${m.total.toLocaleString()}</td>
-      <td style="font-size:12px;color:var(--card-muted,var(--muted));">${itemList}</td>
+      <td style="font-size:14px;color:var(--card-muted,var(--muted));">${itemList}</td>
       <td class="mono" style="color:var(--info);font-weight:700;text-align:right;">¥${running.toLocaleString()}</td>
     </tr>`;
   }).reverse();
@@ -1560,7 +1564,7 @@ function calcSimA() {
   el.innerHTML = `
     <div style="margin-bottom:8px;">月 <span style="font-family:var(--mono);color:var(--accent);font-weight:700;">¥${monthly.toLocaleString()}</span> → 毎月 <span style="color:var(--success);font-weight:700;">${pctPer}%</span> 返済</div>
     <div style="margin-bottom:8px;">完済まで <span style="font-family:var(--mono);color:var(--info);font-weight:700;">${periodStr}</span>（${months}ヶ月）</div>
-    <div style="font-size:12px;border-top:1px solid var(--border);padding-top:8px;display:flex;flex-direction:column;gap:4px;">
+    <div style="font-size:14px;border-top:1px solid var(--border);padding-top:8px;display:flex;flex-direction:column;gap:4px;">
       ${milestones.map(m => `<div>${m}</div>`).join('')}
     </div>`;
 }
@@ -1582,12 +1586,12 @@ function calcSimB() {
       const y = Math.floor(months/12), m = months % 12;
       const periodStr = (y>0?y+'年':'')+(m>0?m+'ヶ月':'');
       html += `<div style="margin-bottom:8px;"><span style="color:var(--muted);">${periodStr}で</span> <span style="color:var(--success);font-weight:700;">${pct}%</span> 返済するには</div>`;
-      html += `<div style="margin-bottom:8px;">毎月 <span style="font-family:var(--mono);color:var(--accent);font-weight:700;font-size:16px;">¥${required.toLocaleString()}</span> 必要</div>`;
-      html += `<div style="font-size:12px;color:var(--muted);">対象金額 ¥${Math.round(targetAmt).toLocaleString()}</div>`;
+      html += `<div style="margin-bottom:8px;">毎月 <span style="font-family:var(--mono);color:var(--accent);font-weight:700;font-size:18px;">¥${required.toLocaleString()}</span> 必要</div>`;
+      html += `<div style="font-size:14px;color:var(--muted);">対象金額 ¥${Math.round(targetAmt).toLocaleString()}</div>`;
     } else {
       // 返済率のみ → 目標金額表示
       html += `<div><span style="color:var(--success);font-weight:700;">${pct}%</span> 返済額：<span style="font-family:var(--mono);color:var(--danger);">¥${Math.round(targetAmt).toLocaleString()}</span></div>`;
-      html += `<div style="font-size:12px;color:var(--muted);margin-top:4px;">達成期間も入力すると必要月額を計算します</div>`;
+      html += `<div style="font-size:14px;color:var(--muted);margin-top:4px;">達成期間も入力すると必要月額を計算します</div>`;
     }
   } else if (months > 0) {
     // 期間のみ → 月額候補を逆算（25%/50%/100%）
@@ -1598,11 +1602,11 @@ function calcSimB() {
     });
     const y = Math.floor(months/12), m = months % 12;
     const periodStr = (y>0?y+'年':'')+(m>0?m+'ヶ月':'');
-    html += `<div style="margin-bottom:6px;color:var(--muted);font-size:12px;">${periodStr}間の返済率別・必要月額</div>`;
+    html += `<div style="margin-bottom:6px;color:var(--muted);font-size:14px;">${periodStr}間の返済率別・必要月額</div>`;
     html += `<div style="display:flex;flex-direction:column;gap:4px;">${rows.join('')}</div>`;
   }
 
-  el.innerHTML = html || '<span style="color:var(--muted);font-size:12px;">数値を入力してください</span>';
+  el.innerHTML = html || '<span style="color:var(--muted);font-size:14px;">数値を入力してください</span>';
 }
 
 // ===== WISHLIST =====
@@ -1657,12 +1661,12 @@ function renderWish() {
     document.getElementById('wishList').innerHTML = sorted.map(w => {
       const sc = STATUS_COLOR[w.status||'want'];
       return `<div style="display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;${w.status==='bought'?'opacity:0.5;':''}">
-        <span style="flex:1;font-weight:700;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;">${esc(w.name||'—')}</span>
-        <span style="font-size:13px;color:#f5a623;flex-shrink:0;letter-spacing:-2px;">${'★'.repeat(w.stars||0)}</span>
-        <span style="font-family:var(--mono);font-size:12px;color:var(--accent);flex-shrink:0;">${w.price?'¥'+w.price.toLocaleString():'—'}</span>
-        ${w.url?`<a href="${esc(w.url)}" target="_blank" style="color:var(--info);font-size:13px;flex-shrink:0;text-decoration:none;">🔗</a>`:''}
-        <button class="btn btn-sm" onclick="editWish('${w.id}')" style="padding:3px 8px;font-size:12px;flex-shrink:0;">編集</button>
-        <button class="btn btn-sm btn-danger" onclick="delWish('${w.id}')" style="padding:3px 8px;font-size:12px;flex-shrink:0;">削除</button>
+        <span style="flex:1;font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;">${esc(w.name||'—')}</span>
+        <span style="font-size:15px;color:#f5a623;flex-shrink:0;letter-spacing:-2px;">${'★'.repeat(w.stars||0)}</span>
+        <span style="font-family:var(--mono);font-size:14px;color:var(--accent);flex-shrink:0;">${w.price?'¥'+w.price.toLocaleString():'—'}</span>
+        ${w.url?`<a href="${esc(w.url)}" target="_blank" style="color:var(--info);font-size:15px;flex-shrink:0;text-decoration:none;">🔗</a>`:''}
+        <button class="btn btn-sm" onclick="editWish('${w.id}')" style="padding:3px 8px;font-size:14px;flex-shrink:0;">編集</button>
+        <button class="btn btn-sm btn-danger" onclick="delWish('${w.id}')" style="padding:3px 8px;font-size:14px;flex-shrink:0;">削除</button>
       </div>`;
     }).join('');
     return;
@@ -1697,9 +1701,9 @@ function renderWish() {
             <td style="font-weight:700;min-width:120px;">${esc(w.name||'—')}</td>
             <td style="white-space:nowrap;">${starsHTML(w.stars||0)}</td>
             <td class="mono" style="color:var(--accent);white-space:nowrap;">${w.price?'¥'+w.price.toLocaleString():'—'}</td>
-            <td><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:${sc}22;color:${sc};border:1px solid ${sc}44;white-space:nowrap;">${STATUS[w.status||'want']}</span></td>
-            <td>${w.url?`<a href="${esc(w.url)}" target="_blank" style="color:var(--info);font-size:12px;">🔗 リンク</a>`:'—'}</td>
-            <td style="font-size:12px;color:var(--card-muted,var(--muted));max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(w.memo||'')}</td>
+            <td><span style="font-size:13px;font-weight:700;padding:2px 8px;border-radius:4px;background:${sc}22;color:${sc};border:1px solid ${sc}44;white-space:nowrap;">${STATUS[w.status||'want']}</span></td>
+            <td>${w.url?`<a href="${esc(w.url)}" target="_blank" style="color:var(--info);font-size:14px;">🔗 リンク</a>`:'—'}</td>
+            <td style="font-size:14px;color:var(--card-muted,var(--muted));max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(w.memo||'')}</td>
             <td>
               <div style="display:flex;gap:4px;">
                 <button class="btn btn-sm" onclick="editWish('${w.id}')">編集</button>
@@ -1826,16 +1830,43 @@ function calcLoanPreview() {
 }
 
 // 月間収支の返済レコードから借入先ごとの実返済額を集計
+function getLoanPaidCount(loanName) {
+  if (!db.monthly) return 0;
+  let count = 0;
+  db.monthly
+    .filter(r => r.type === 'expense'
+      && (r.midCat || inferMidCat(r.cat)) === '返済'
+      && r.name === loanName)
+    .forEach(r => {
+      if (r.fixed) {
+        Object.keys(r).forEach(k => {
+          if (k.startsWith('paid_') && r[k] === true) count++;
+        });
+      } else if (r.paid === true) {
+        count++;
+      }
+    });
+  return count;
+}
+
 function getLoanPaid(loanName) {
   if (!db.monthly) return 0;
-  // 直接レコード（paid===true）を集計
-  // 名前が一致するもの全月分
   return db.monthly
     .filter(r => r.type === 'expense'
       && (r.midCat || inferMidCat(r.cat)) === '返済'
-      && r.name === loanName
-      && r.paid === true)
-    .reduce((s, r) => s + (r.amount || 0), 0);
+      && r.name === loanName)
+    .reduce((s, r) => {
+      let total = 0;
+      if (r.fixed) {
+        // 固定項目：paid_YYYY-MM キーを全て合計
+        Object.keys(r).forEach(k => {
+          if (k.startsWith('paid_') && r[k] === true) total += (r.amount || 0);
+        });
+      } else if (r.paid === true) {
+        total += (r.amount || 0);
+      }
+      return s + total;
+    }, 0);
 }
 
 function renderDebt() {
@@ -1844,7 +1875,7 @@ function renderDebt() {
 
   const now = new Date();
   const thisYM = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
-  let totalPrincipal = 0, totalInterest = 0, thisMonthPayment = 0, totalPaid = 0, latestPayoff = null;
+  let totalPrincipal = 0, totalInterest = 0, totalPaid = 0, latestPayoff = null;
 
   loans.forEach(l => {
     const net = (l.principal||0) - (l.down||0);
@@ -1856,8 +1887,14 @@ function renderDebt() {
       totalInterest += r.totalInterest||0;
       if (r.payoffYM && (!latestPayoff || r.payoffYM > latestPayoff)) latestPayoff = r.payoffYM;
     }
-    if (l.start && l.start <= thisYM) thisMonthPayment += l.monthly||0;
   });
+
+  // 今月の実際の返済チェック済み合計
+  const thisMonthPayment = (db.monthly || [])
+    .filter(r => r.type === 'expense'
+      && (r.midCat || inferMidCat(r.cat)) === '返済'
+      && (r.fixed ? r['paid_' + thisYM] === true : (r.paid === true && r.date && r.date.slice(0,7) === thisYM)))
+    .reduce((s, r) => s + (r.amount || 0), 0);
 
   const totalRemain = Math.max(0, totalPrincipal - totalPaid);
   const overallPct = totalPrincipal > 0 ? Math.round(totalPaid / totalPrincipal * 100) : 0;
@@ -1880,7 +1917,7 @@ function renderDebt() {
     </div>
     <div class="stat-card">
       <div class="stat-label">全額返済時期</div>
-      <div class="stat-val" style="color:var(--info);font-size:18px;">${latestPayoff ? fmtYM(latestPayoff) : '—'}</div>
+      <div class="stat-val" style="color:var(--info);font-size:20px;">${latestPayoff ? fmtYM(latestPayoff) : '—'}</div>
       <div class="stat-sub">利息総額 ¥${totalInterest.toLocaleString()}</div>
     </div>
   `;
@@ -1901,9 +1938,7 @@ function renderDebt() {
       const paid = getLoanPaid(l.name);
       const remain = Math.max(0, net - paid);
       const totalMonths = (r && !impossible) ? r.months : 0;
-      const paidCount = db.monthly.filter(rec =>
-        rec.type==='expense' && (rec.midCat||inferMidCat(rec.cat))==='返済'
-        && rec.name===l.name && rec.paid===true).length;
+      const paidCount = getLoanPaidCount(l.name);
       let payoffStr = '—';
       if (r && !impossible) payoffStr = fmtYM(r.payoffYM);
       const done = remain === 0 && paid > 0;
@@ -1913,11 +1948,11 @@ function renderDebt() {
       return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;${done?'opacity:0.55;':''}${impossible?'border-color:var(--danger);':''}">
         <!-- 1行目：項目名 + 借入金額 -->
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <div style="font-weight:700;font-size:15px;">${esc(l.name||'—')}${done?'<span style="font-size:11px;color:var(--success);margin-left:6px;">✓完済</span>':''}</div>
+          <div style="font-weight:700;font-size:17px;">${esc(l.name||'—')}${done?'<span style="font-size:13px;color:var(--success);margin-left:6px;">✓完済</span>':''}</div>
           <span style="font-family:var(--mono);font-weight:700;color:var(--danger);">¥${net.toLocaleString()}</span>
         </div>
         <!-- 2行目：月返済額 + 進捗 + 完済時期 + ボタン -->
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;">
           <span style="color:var(--muted);">月額</span>
           <span style="font-family:var(--mono);color:var(--accent);">${l.monthly?'¥'+l.monthly.toLocaleString():'調整中'}</span>
           <span style="color:var(--muted);">|</span>
@@ -1925,8 +1960,8 @@ function renderDebt() {
           <span style="color:var(--muted);">|</span>
           <span style="font-family:var(--mono);color:var(--info);">${impossible?'返済不可':payoffStr}</span>
           <div style="margin-left:auto;display:flex;gap:6px;">
-            <button class="btn btn-sm" onclick="editLoan('${l.id}')" style="padding:4px 10px;font-size:12px;">編集</button>
-            <button class="btn btn-sm btn-danger" onclick="delLoan('${l.id}')" style="padding:4px 10px;font-size:12px;">削除</button>
+            <button class="btn btn-sm" onclick="editLoan('${l.id}')" style="padding:4px 10px;font-size:14px;">編集</button>
+            <button class="btn btn-sm btn-danger" onclick="delLoan('${l.id}')" style="padding:4px 10px;font-size:14px;">削除</button>
           </div>
         </div>
       </div>`;
@@ -1959,12 +1994,7 @@ function renderDebt() {
           const paid = getLoanPaid(l.name);
           const remain = Math.max(0, net - paid);
           const totalMonths = (r && !impossible) ? r.months : 0;
-          const paidCount = db.monthly.filter(rec =>
-            rec.type === 'expense'
-            && (rec.midCat || inferMidCat(rec.cat)) === '返済'
-            && rec.name === l.name
-            && rec.paid === true
-          ).length;
+          const paidCount = getLoanPaidCount(l.name);
           let mStr = '—', payoffStr = '—';
           if (r && !impossible) {
             const y = Math.floor(r.months/12), mo = r.months%12;
@@ -1980,14 +2010,14 @@ function renderDebt() {
             ondrop="onDrop(event,'${l.id}')">
             <td><span class="drag-handle">⠿</span></td>
             <td>
-              <div style="font-weight:700;">${esc(l.name||'—')}${done?'<span style="font-size:10px;color:var(--success);margin-left:5px;">✓完済</span>':''}</div>
-              ${l.note?`<div style="font-size:11px;color:var(--card-muted,var(--muted))">${esc(l.note)}</div>`:''}
+              <div style="font-weight:700;">${esc(l.name||'—')}${done?'<span style="font-size:12px;color:var(--success);margin-left:5px;">✓完済</span>':''}</div>
+              ${l.note?`<div style="font-size:13px;color:var(--card-muted,var(--muted))">${esc(l.note)}</div>`:''}
             </td>
             <td><span class="mono" style="color:var(--danger)">¥${net.toLocaleString()}</span></td>
             <td><span class="mono" style="color:var(--success)">¥${paid.toLocaleString()}</span></td>
             <td><span class="mono" style="color:${remain>0?'var(--warning)':'var(--success)'}">¥${remain.toLocaleString()}</span></td>
             <td>
-              <span class="mono" style="font-size:12px;color:var(--success);white-space:nowrap;">
+              <span class="mono" style="font-size:14px;color:var(--success);white-space:nowrap;">
                 ${paidCount}<span style="color:var(--muted);">/${totalMonths||'?'}回</span>
               </span>
               ${totalMonths > 0 ? `<div class="prog-mini"><div class="prog-mini-fill" style="width:${Math.min(100,Math.round(paidCount/totalMonths*100))}%"></div></div>` : ''}
@@ -2305,7 +2335,7 @@ function recRowHTML(r) {
   const day = r.date ? r.date.slice(8) : '—';
   const realId = r._synthetic ? r.fixedRef : r.id;
   const realRec = db.monthly.find(x => x.id === realId) || r;
-  const isPaid = !!realRec.paid;
+  const isPaid = getRecordPaid(realRec, mthCursor);
   const editBtn = `<button class="btn btn-sm" onclick="editMthRecord('${realId}')">編集</button>`;
   const delBtn  = `<button class="btn btn-sm btn-danger" onclick="delMthRecord('${realId}')">×</button>`;
   return `<div class="rec-row" draggable="true" style="${isPaid ? 'opacity:0.5;' : ''}"
@@ -2329,8 +2359,8 @@ function recRowHTML(r) {
         const to   = r.fixedTo   || '';
         const range = from ? (to ? `${from}〜${to}` : `${from}〜無期限`) : '';
         const modeLabel = (r.fixedMode || 0) === 2 ? '隔月' : '固定';
-        return `<span style="font-size:10px;color:var(--accent);margin-left:5px;">${modeLabel}${range ? ' '+range : ''}</span>`;
-      })() : ''}</div>${r.memo?`<div style="font-size:11px;color:var(--card-muted,var(--muted));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(r.memo)}</div>`:''}
+        return `<span style="font-size:12px;color:var(--accent);margin-left:5px;">${modeLabel}${range ? ' '+range : ''}</span>`;
+      })() : ''}</div>${r.memo?`<div style="font-size:13px;color:var(--card-muted,var(--muted));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(r.memo)}</div>`:''}
     </div>
     <div class="rec-amt" style="color:${isInc?'var(--success)':'var(--danger)'}">${isInc?'+':'-'}¥${(r.amount||0).toLocaleString()}</div>
     ${editBtn}${delBtn}
@@ -2340,12 +2370,12 @@ function recRowHTML(r) {
 function sectionHeader(label, total, color) {
   const isIncome = label === '収入';
   const btnHtml = isIncome
-    ? `<button class="btn btn-sm btn-primary" onclick="openMthModal('income')" style="font-size:12px;">＋ 収入追加</button>`
-    : `<button class="btn btn-sm btn-primary" onclick="openMthModal('expense')" style="font-size:12px;">－ 支出追加</button>`;
+    ? `<button class="btn btn-sm btn-primary" onclick="openMthModal('income')" style="font-size:14px;">＋ 収入追加</button>`
+    : `<button class="btn btn-sm btn-primary" onclick="openMthModal('expense')" style="font-size:14px;">－ 支出追加</button>`;
   return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 4px 6px;border-bottom:1px solid var(--border);margin-bottom:8px;margin-top:4px;">
     <div style="display:flex;align-items:center;gap:12px;">
-      <span style="font-size:12px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:.05em;">${label}</span>
-      <span style="font-family:var(--mono);font-size:13px;font-weight:700;color:${color}">合計 ¥${total.toLocaleString()}</span>
+      <span style="font-size:14px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:.05em;">${label}</span>
+      <span style="font-family:var(--mono);font-size:15px;font-weight:700;color:${color}">合計 ¥${total.toLocaleString()}</span>
     </div>
     ${btnHtml}
   </div>`;
@@ -2371,8 +2401,8 @@ function renderMonthly() {
   const diffColor = diff >= 0 ? 'var(--success)' : 'var(--danger)';
 
   // チェック済み合計
-  const checkedIncAmt = recs.filter(r => r.type === 'income' && r.paid).reduce((s, r) => s + (r.amount || 0), 0);
-  const checkedExpAmt = recs.filter(r => r.type === 'expense' && r.paid).reduce((s, r) => s + (r.amount || 0), 0);
+  const checkedIncAmt = recs.filter(r => r.type === 'income' && getRecordPaid(r, mthCursor)).reduce((s, r) => s + (r.amount || 0), 0);
+  const checkedExpAmt = recs.filter(r => r.type === 'expense' && getRecordPaid(r, mthCursor)).reduce((s, r) => s + (r.amount || 0), 0);
 
   document.getElementById('mthStats').innerHTML = `
     <div class="stat-card"><div class="stat-label">収入合計</div><div class="stat-val" style="color:var(--success)">¥${income.toLocaleString()}</div><div class="stat-sub" style="color:var(--success);">入金済み ¥${checkedIncAmt.toLocaleString()}</div><div class="stat-sub" style="color:var(--danger);">未入金 ¥${(income-checkedIncAmt).toLocaleString()}</div></div>
@@ -2404,12 +2434,33 @@ function renderMonthly() {
     </div>`;
 
   el.innerHTML = `
-    <div class="mth-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
-      ${incHTML}
-      ${expHTML}
-    </div>`;
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <button class="btn" id="mthViewInc" onclick="setMthView('income')" style="flex:1;font-size:16px;">収入</button>
+      <button class="btn btn-primary" id="mthViewExp" onclick="setMthView('expense')" style="flex:1;font-size:16px;">支出</button>
+    </div>
+    <div id="mthViewIncPanel" style="display:none;">${incHTML}</div>
+    <div id="mthViewExpPanel" style="display:block;">${expHTML}</div>`;
 
   mobileifyTables();
+}
+
+function setMthView(view) {
+  const incPanel = document.getElementById('mthViewIncPanel');
+  const expPanel = document.getElementById('mthViewExpPanel');
+  const incBtn   = document.getElementById('mthViewInc');
+  const expBtn   = document.getElementById('mthViewExp');
+  if (!incPanel) return;
+  if (view === 'income') {
+    incPanel.style.display = 'block';
+    expPanel.style.display = 'none';
+    incBtn.classList.add('btn-primary');
+    expBtn.classList.remove('btn-primary');
+  } else {
+    incPanel.style.display = 'none';
+    expPanel.style.display = 'block';
+    expBtn.classList.add('btn-primary');
+    incBtn.classList.remove('btn-primary');
+  }
 }
 
 function buildExpenseGroupHTML(expRecs) {
@@ -2430,8 +2481,8 @@ function buildExpenseGroupHTML(expRecs) {
     const groupHeader = `
       <tr>
         <td colspan="8" style="background:${mc}18;border-left:3px solid ${mc};padding:7px 12px;">
-          <span style="font-size:12px;font-weight:700;color:${mc}">${mid}</span>
-          <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:${mc};margin-left:12px;">小計 ¥${grpTotal.toLocaleString()}</span>
+          <span style="font-size:14px;font-weight:700;color:${mc}">${mid}</span>
+          <span style="font-family:var(--mono);font-size:13px;font-weight:700;color:${mc};margin-left:12px;">小計 ¥${grpTotal.toLocaleString()}</span>
         </td>
       </tr>`;
     const itemRows = grpRecs.map(r => {
@@ -2439,7 +2490,7 @@ function buildExpenseGroupHTML(expRecs) {
       const day = r.date ? r.date.slice(8) : '—';
       const realId = r._synthetic ? r.fixedRef : r.id;
       const realRec = db.monthly.find(x => x.id === realId) || r;
-      const isPaid = !!realRec.paid;
+      const isPaid = getRecordPaid(realRec, mthCursor);
       const editBtn = `<button class="btn btn-sm" onclick="editMthRecord('${realId}')">編集</button>`;
       const delBtn  = `<button class="btn btn-sm btn-danger" onclick="delMthRecord('${realId}')">×</button>`;
       return `<tr class="${isPaid ? 'exp-paid' : ''}"
@@ -2454,8 +2505,8 @@ function buildExpenseGroupHTML(expRecs) {
             ${isPaid ? '✓' : ''}
           </div>
         </td>
-        <td style="color:var(--card-muted,var(--muted));font-family:var(--mono);font-size:11px;">${day}日</td>
-        <td><span class="rec-cat" style="background:rgba(255,255,255,0.08);color:var(--card-text,var(--text));border:1px solid rgba(255,255,255,0.15);font-size:10px;padding:2px 7px;border-radius:4px;">${r.cat||'未分類'}</span></td>
+        <td style="color:var(--card-muted,var(--muted));font-family:var(--mono);font-size:13px;">${day}日</td>
+        <td><span class="rec-cat" style="background:rgba(255,255,255,0.08);color:var(--card-text,var(--text));border:1px solid rgba(255,255,255,0.15);font-size:12px;padding:2px 7px;border-radius:4px;">${r.cat||'未分類'}</span></td>
         <td style="font-weight:500;text-align:left;">
           <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(r.name)}</div>
         </td>
@@ -2724,10 +2775,23 @@ document.addEventListener('click', e => {
   }
 });
 
+function getRecordPaid(r, ym) {
+  if (!r) return false;
+  if (r.fixed) return !!(r['paid_' + (ym || mthCursor)]);
+  return !!r.paid;
+}
+
 function toggleExpPaid(id) {
+  // 合成レコードの場合は元IDと現在月でキーを作る
   const r = db.monthly.find(x => x.id === id);
   if (!r) return;
-  r.paid = !r.paid;
+  if (r.fixed) {
+    // 固定項目：月ごとにチェック状態を管理
+    const key = 'paid_' + mthCursor;
+    r[key] = !r[key];
+  } else {
+    r.paid = !r.paid;
+  }
   save(db);
   renderMonthly();
   const mid = r.type === 'expense' ? (r.midCat || inferMidCat(r.cat)) : '';
@@ -2827,7 +2891,7 @@ window.addEventListener('orientationchange', () => setTimeout(fixTabTop, 200));
     overflow:hidden;z-index:9999;pointer-events:none;
     transition:height .15s ease;
   `;
-  indicator.innerHTML = `<div id="ptr-label" style="padding:8px 16px;font-size:12px;color:var(--accent);font-family:var(--mono);opacity:0;transition:opacity .2s;"></div>`;
+  indicator.innerHTML = `<div id="ptr-label" style="padding:8px 16px;font-size:14px;color:var(--accent);font-family:var(--mono);opacity:0;transition:opacity .2s;"></div>`;
   document.body.prepend(indicator);
 
   const label = document.getElementById('ptr-label');
@@ -2915,7 +2979,7 @@ function showToast(msg, color) {
   toast.style.cssText = `
     position:fixed;bottom:24px;right:24px;
     background:${color||'var(--success)'};color:#fff;
-    padding:10px 18px;border-radius:8px;font-size:13px;
+    padding:10px 18px;border-radius:8px;font-size:15px;
     font-family:var(--body);font-weight:600;z-index:9999;
     box-shadow:0 4px 12px rgba(0,0,0,0.3);animation:fadeInUp .3s ease;
   `;
