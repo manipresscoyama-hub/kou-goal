@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja" data-theme="yellow" style="background:#fef9e7;">
 <head>
@@ -464,7 +465,6 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   <button class="tab-btn" onclick="switchTab('wish',this)">⭐ 欲しいもの</button>
 </nav>
 
-<datalist id="nameHistory"></datalist>
 
 <div class="main" style="background:#fef9e7;">
 
@@ -705,7 +705,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <div class="modal-title" id="wishModalTitle">欲しいもの追加</div>
       <button class="modal-close" onclick="closeModal('wishModal')">×</button>
     </div>
-    <div class="fg"><label class="fl">商品名</label><input type="text" class="fi" id="wName" placeholder="商品名を入力" list="nameHistory" autocomplete="off"></div>
+    <div class="fg"><label class="fl">商品名</label><input type="text" class="fi" id="wName" placeholder="商品名を入力" autocomplete="off"></div>
     <div class="form-row">
       <div class="fg"><label class="fl">金額（円）</label><input type="number" class="fi" id="wPrice" placeholder="0"></div>
       <div class="fg">
@@ -778,7 +778,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     </div>
     <div class="fg" id="mthNameRow">
       <label class="fl">項目名</label>
-      <input type="text" class="fi" id="mthName" placeholder="例：給与、食費" list="nameHistory" autocomplete="off">
+      <input type="text" class="fi" id="mthName" placeholder="例：給与、食費" autocomplete="off">
     </div>
     <div class="fg" id="mthLoanNameRow" style="display:none;">
       <label class="fl">項目名（借入先）</label>
@@ -929,6 +929,7 @@ const DB_KEY = 'kou_goal_v2';
 let gAccessToken = null; // 互換用（未使用）
 let _syncTimer = null;
 let _syncing   = false;
+const IS_NETLIFY = window.location.hostname.includes('netlify.app');
 
 const load = () => { try { const r = localStorage.getItem(DB_KEY); return r ? JSON.parse(r) : null; } catch { return null; } };
 const save = d => {
@@ -1091,6 +1092,70 @@ if (db.resetDate !== today()) {
   const before = db.goals.length;
   db.goals = db.goals.filter(g => !remove.has(g.id));
   if (db.goals.length !== before) save(db);
+})();
+
+// データ更新マイグレーション
+(function() {
+  let changed = false;
+
+  // ゴール更新・追加
+  const newGoals = [
+    {
+      id:'g4', title:'のんたと婚約', category:'人生', timeline:'カスタム', deadline:'2027-11-09', progress:15,
+      description:'経済的な見通しを立てながら、プロポーズを成功させ婚約を取り付ける。\n・財務基盤の安定が前提条件。\n・事実婚\n・籍を入れるのは子供たちが18歳になってから\n・苗字を菊地に変更\n・別居婚',
+      milestones:[{text:'経済的な見通しを確定する',done:false},{text:'結婚について正式に決める',done:false},{text:'入籍',done:false}]
+    },
+    {
+      id:'g1777087982756', title:'転職活動', category:'キャリア', timeline:'3ヶ月', deadline:'2026-10-31', progress:0,
+      description:'転職活動を成功させて、月30万以上の収入を安定させる。',
+      milestones:[{text:'転職先を探す',done:false},{text:'応募する',done:false},{text:'面接する',done:false}]
+    },
+    {
+      id:'g1777088076148', title:'借金返済を軌道に乗せる', category:'財務', timeline:'カスタム', deadline:'2027-04-30', progress:0,
+      description:'借金を完済し、生活の安定、のんたとの結婚生活、子育てに注力できるようにする。',
+      milestones:[]
+    }
+  ];
+  newGoals.forEach(ng => {
+    const idx = db.goals.findIndex(g => g.id === ng.id);
+    if (idx >= 0) { db.goals[idx] = ng; changed = true; }
+    else { db.goals.push(ng); changed = true; }
+  });
+
+  // ゴール「g1」を削除（小岩店）
+  const g1idx = db.goals.findIndex(g => g.id === 'g1');
+  if (g1idx >= 0) { db.goals.splice(g1idx, 1); changed = true; }
+
+  // 欲しいもの追加
+  if (!db.wishes) db.wishes = [];
+  const newWishes = [
+    {id:'w1777091512107', name:'結婚指輪（ペア）', price:200000, url:'', memo:'', stars:1, status:'want'},
+    {id:'w1777091532888', name:'浄水器', price:20000, url:'', memo:'', stars:3, status:'want'},
+    {id:'w1777091562001', name:'スーツ', price:20000, url:'', memo:'', stars:3, status:'want'},
+    {id:'w1777091594873', name:'車の免許', price:200000, url:'', memo:'', stars:2, status:'want'}
+  ];
+  newWishes.forEach(nw => {
+    if (!db.wishes.find(w => w.id === nw.id)) { db.wishes.push(nw); changed = true; }
+  });
+
+  // 貯金目標追加
+  if (!db.savingsGoals) db.savingsGoals = [];
+  const newSavingsGoals = [
+    {id:'sg1777091710423', name:'結婚資金', target:1000000, deadline:'2027-11-09', memo:''}
+  ];
+  newSavingsGoals.forEach(ns => {
+    if (!db.savingsGoals.find(s => s.id === ns.id)) { db.savingsGoals.push(ns); changed = true; }
+  });
+
+  // 借入先名更新
+  const loanNameMap = {'loan_10': '姉からの借金'};
+  db.loans.forEach(l => {
+    if (loanNameMap[l.id] && l.name !== loanNameMap[l.id]) {
+      l.name = loanNameMap[l.id]; changed = true;
+    }
+  });
+
+  if (changed) save(db);
 })();
 
 // ===== TABS =====
@@ -2892,6 +2957,7 @@ async function updateBackupBtnLabel() {
 const SYNC_URL = '/.netlify/functions/gist';
 
 async function loadFromGist() {
+  if (!IS_NETLIFY) return; // GitHub Pagesでは同期しない
   try {
     showToast('☁ データを同期中...', 'var(--info)');
     const res = await fetch(SYNC_URL);
@@ -2921,6 +2987,7 @@ async function loadFromGist() {
 }
 
 function syncToGist(data) {
+  if (!IS_NETLIFY) return; // GitHub Pagesでは同期しない
   if (_syncTimer) clearTimeout(_syncTimer);
   _syncTimer = setTimeout(async () => {
     if (_syncing) return;
@@ -2948,7 +3015,6 @@ setTimeout(autoBackup, 1500);
 document.getElementById('hdrDate').textContent = new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
 applySettings();
 renderGoals();
-renderNameHistory();
 updateBackupBtnLabel();
 </script>
 </body>
