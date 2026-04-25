@@ -779,7 +779,10 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     </div>
     <div class="fg" id="mthNameRow">
       <label class="fl">項目名</label>
-      <input type="text" class="fi" id="mthName" placeholder="例：給与、食費" autocomplete="new-password">
+      <select class="fs" id="mthNameSelect" onchange="onMthNameSelect(this)" style="margin-bottom:6px;">
+        <option value="">-- 選択または下に入力 --</option>
+      </select>
+      <input type="text" class="fi" id="mthName" placeholder="新しい項目名を入力" autocomplete="new-password">
     </div>
     <div class="fg" id="mthLoanNameRow" style="display:none;">
       <label class="fl">項目名（借入先）</label>
@@ -2498,6 +2501,33 @@ function updateExpSubCats(midCat, selCat) {
   }
 }
 
+// 項目名プルダウンを更新
+function updateMthNameSelect(type) {
+  const sel = document.getElementById('mthNameSelect');
+  if (!sel) return;
+  // 過去に登録した名前を収集
+  const past = [...new Set(
+    (db.monthly || [])
+      .filter(r => r.type === type)
+      .map(r => r.name)
+      .filter(Boolean)
+  )];
+  // 固定候補
+  const fixed = type === 'income'
+    ? ['鰻屋', '採用コンサル', '障害年金']
+    : ['食費', '雑費', '電気代', 'スマホ代', 'Amazon prime', 'Claude AI', '家賃+ネット代'];
+  // 合体（固定 + 過去登録、重複除去）
+  const all = [...new Set([...fixed, ...past])];
+  sel.innerHTML = '<option value="">-- 選択または下に入力 --</option>' +
+    all.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+}
+
+function onMthNameSelect(sel) {
+  if (sel.value) {
+    document.getElementById('mthName').value = sel.value;
+  }
+}
+
 function openMthModal(type) {
   const isInc = type === 'income';
   document.getElementById('mthModalTitle').textContent = isInc ? '収入追加' : '支出追加';
@@ -2506,6 +2536,8 @@ function openMthModal(type) {
   document.getElementById('mthType').value = type;
   document.getElementById('mthEditId').value = '';
   document.getElementById('mthName').value = '';
+  document.getElementById('mthNameSelect').value = '';
+  updateMthNameSelect(type);
   document.getElementById('mthLoanName').value = '';
   document.getElementById('mthNameRow').style.display = 'block';
   document.getElementById('mthLoanNameRow').style.display = 'none';
@@ -2592,6 +2624,8 @@ function editMthRecord(id) {
   document.getElementById('mthDate').value = r.date || '';
   document.getElementById('mthMemo').value = r.memo || '';
   document.getElementById('mthFixed').value = r.fixedMode || (r.fixed ? '1' : '0');
+  updateMthNameSelect(r.type);
+  document.getElementById('mthNameSelect').value = '';
   document.getElementById('mthFixedPeriod').style.display = r.fixed ? 'block' : 'none';
   mpSetValue('mthFixedFrom', r.fixedFrom || r.date?.slice(0, 7) || '');
   r.fixedTo ? mpSetValue('mthFixedTo', r.fixedTo) : mpClear('mthFixedTo');
