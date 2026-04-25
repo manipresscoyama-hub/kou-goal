@@ -252,6 +252,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:20px 0;}
 .empty{text-align:center;padding:48px 20px;color:var(--muted);}
 .empty .ico{font-size:36px;margin-bottom:10px;}
 
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{background:var(--surface2) !important;-webkit-box-shadow:0 0 0px 1000px var(--surface2) inset !important;}
 @keyframes blink{0%,80%,100%{opacity:0;}40%{opacity:1;}}
 .dots span{animation:blink 1.2s infinite;font-size:18px;}
 .dots span:nth-child(2){animation-delay:.25s;}
@@ -667,10 +668,10 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <div class="modal-title" id="savingsGoalModalTitle">貯金目標追加</div>
       <button class="modal-close" onclick="closeModal('savingsGoalModal')">×</button>
     </div>
-    <div class="fg"><label class="fl">目標名</label><input type="text" class="fi" id="sgName" placeholder="例：結婚資金、旅行費用"></div>
+    <div class="fg"><label class="fl">目標名</label><input type="text" class="fi" id="sgName" placeholder="例：結婚資金、旅行費用" autocomplete="new-password"></div>
     <div class="fg"><label class="fl">目標金額（円）</label><input type="number" class="fi" id="sgTarget" placeholder="0"></div>
     <div class="fg"><label class="fl">期限</label><input type="date" class="fi" id="sgDeadline"></div>
-    <div class="fg"><label class="fl">メモ</label><input type="text" class="fi" id="sgMemo" placeholder="備考"></div>
+    <div class="fg"><label class="fl">メモ</label><input type="text" class="fi" id="sgMemo" placeholder="備考" autocomplete="new-password"></div>
     <input type="hidden" id="sgEditId">
     <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
       <button class="btn" onclick="closeModal('savingsGoalModal')">キャンセル</button>
@@ -705,7 +706,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <div class="modal-title" id="wishModalTitle">欲しいもの追加</div>
       <button class="modal-close" onclick="closeModal('wishModal')">×</button>
     </div>
-    <div class="fg"><label class="fl">商品名</label><input type="text" class="fi" id="wName" placeholder="商品名を入力" autocomplete="off"></div>
+    <div class="fg"><label class="fl">商品名</label><input type="text" class="fi" id="wName" placeholder="商品名を入力" autocomplete="new-password"></div>
     <div class="form-row">
       <div class="fg"><label class="fl">金額（円）</label><input type="number" class="fi" id="wPrice" placeholder="0"></div>
       <div class="fg">
@@ -720,7 +721,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
         <input type="hidden" id="wStars" value="3">
       </div>
     </div>
-    <div class="fg"><label class="fl">リンク（URL）</label><input type="url" class="fi" id="wUrl" placeholder="https://..."></div>
+    <div class="fg"><label class="fl">リンク（URL）</label><input type="url" class="fi" id="wUrl" placeholder="https://..." autocomplete="new-password"></div>
     <div class="fg"><label class="fl">メモ</label><textarea class="ft" id="wMemo" placeholder="備考" style="min-height:55px;"></textarea></div>
     <div class="fg">
       <label class="fl">ステータス</label>
@@ -745,7 +746,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <div class="modal-title" id="goalModalTitle">ゴール追加</div>
       <button class="modal-close" onclick="closeModal('goalModal')">×</button>
     </div>
-    <div class="fg"><label class="fl">タイトル</label><input type="text" class="fi" id="gTitle" placeholder="達成したいこと"></div>
+    <div class="fg"><label class="fl">タイトル</label><input type="text" class="fi" id="gTitle" placeholder="達成したいこと" autocomplete="new-password"></div>
     <div class="form-row">
       <div class="fg"><label class="fl">カテゴリ</label>
         <select class="fs" id="gCat"><option>財務</option><option>副業</option><option>キャリア</option><option>人生</option><option>健康</option><option>その他</option></select>
@@ -778,7 +779,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
     </div>
     <div class="fg" id="mthNameRow">
       <label class="fl">項目名</label>
-      <input type="text" class="fi" id="mthName" placeholder="例：給与、食費" autocomplete="off">
+      <input type="text" class="fi" id="mthName" placeholder="例：給与、食費" autocomplete="new-password">
     </div>
     <div class="fg" id="mthLoanNameRow" style="display:none;">
       <label class="fl">項目名（借入先）</label>
@@ -833,7 +834,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
         </select>
       </div>
     </div>
-    <div class="fg"><label class="fl">メモ</label><input type="text" class="fi" id="mthMemo" placeholder="備考"></div>
+    <div class="fg"><label class="fl">メモ</label><input type="text" class="fi" id="mthMemo" placeholder="備考" autocomplete="new-password"></div>
     <input type="hidden" id="mthType">
     <input type="hidden" id="mthEditId">
     <div id="mthFixedPeriod" style="display:none;">
@@ -894,7 +895,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
       <button class="modal-close" onclick="closeModal('loanModal')">×</button>
     </div>
     <div class="form-row">
-      <div class="fg"><label class="fl">借入先名</label><input type="text" class="fi" id="lName" placeholder="例：消費者金融A、カードローンB"></div>
+      <div class="fg"><label class="fl">借入先名</label><input type="text" class="fi" id="lName" placeholder="例：消費者金融A、カードローンB" autocomplete="new-password"></div>
       <div class="fg"><label class="fl">借入金額（円）</label><input type="number" class="fi" id="lPrincipal" placeholder="0" oninput="calcLoanPreview()"></div>
     </div>
     <div class="form-row">
