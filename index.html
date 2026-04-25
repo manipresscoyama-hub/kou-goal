@@ -2268,6 +2268,7 @@ function renderNameHistory() {
 
 // ===== MONTHLY INCOME/EXPENSE =====
 let mthCursor = new Date().toISOString().slice(0, 7);
+let mthCurrentView = 'expense'; // デフォルトは支出
 
 const INCOME_CATS = ['給与','ボーナス','副業','フリーランス','投資・配当','還付金','年金','その他収入'];
 const EXPENSE_TREE = {
@@ -2439,12 +2440,15 @@ function renderMonthly() {
       <button class="btn btn-primary" id="mthViewExp" onclick="setMthView('expense')" style="flex:1;font-size:16px;">支出</button>
     </div>
     <div id="mthViewIncPanel" style="display:none;">${incHTML}</div>
-    <div id="mthViewExpPanel" style="display:block;">${expHTML}</div>`;
+    <div id="mthViewExpPanel" style="display:none;">${expHTML}</div>`;
 
+  // 現在のビュー状態を復元
+  setMthView(mthCurrentView);
   mobileifyTables();
 }
 
 function setMthView(view) {
+  mthCurrentView = view;
   const incPanel = document.getElementById('mthViewIncPanel');
   const expPanel = document.getElementById('mthViewExpPanel');
   const incBtn   = document.getElementById('mthViewInc');
