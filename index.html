@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="ja" data-theme="yellow" style="background:#fef9e7;">
 <head>
@@ -1119,10 +1120,13 @@ if (db.resetDate !== today()) {
       milestones:[]
     }
   ];
+  if (!db.deletedSeedGoalIds) db.deletedSeedGoalIds = [];
   newGoals.forEach(ng => {
     const idx = db.goals.findIndex(g => g.id === ng.id);
-    if (idx >= 0) { db.goals[idx] = ng; changed = true; }
-    else { db.goals.push(ng); changed = true; }
+    if (idx < 0 && !db.deletedSeedGoalIds.includes(ng.id)) {
+      db.goals.push(ng);
+      changed = true;
+    }
   });
 
   // ゴール「g1」を削除（小岩店）
@@ -1283,6 +1287,10 @@ function saveGoal() {
 function delGoal(id) {
   const g = db.goals.find(x=>x.id===id);
   showConfirm(`「${g?.title||'このゴール'}」を削除しますか？`, () => {
+    if (['g4', 'g1777087982756', 'g1777088076148'].includes(id)) {
+      if (!db.deletedSeedGoalIds) db.deletedSeedGoalIds = [];
+      if (!db.deletedSeedGoalIds.includes(id)) db.deletedSeedGoalIds.push(id);
+    }
     db.goals = db.goals.filter(g=>g.id!==id);
     save(db); renderGoals();
   });
