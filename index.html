@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>こうの目標管理システム</title>
+<title>KOU-GOAL by manipress</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -472,9 +472,9 @@ body{
   min-height:86px;
   background-color:#00112e;
   background-image:linear-gradient(90deg,rgba(0,18,45,.18),rgba(0,18,45,.24)),url("./assets/header-logo.png");
-  background-size:auto 100%;
+  background-size:430px auto;
   background-repeat:no-repeat;
-  background-position:center;
+  background-position:30px center;
 }
 .hdr-title{font-size:20px;font-weight:700;letter-spacing:.03em;}
 .hdr-brand-spacer{width:210px;height:42px;}
@@ -600,7 +600,7 @@ body{
   border-radius:8px;
 }
 @media(max-width:640px){
-  .hdr{padding:12px 14px;min-height:72px;background-position:center;background-size:auto 100%;}
+  .hdr{padding:12px 14px;min-height:72px;background-position:14px center;background-size:300px auto;}
   .hdr-brand-spacer{width:150px;height:34px;}
   .app-footer{min-height:72px;font-size:12px;background-size:auto 100%;}
   .main{padding:18px 12px 42px;}
@@ -750,7 +750,7 @@ body{
 
   <!-- FOOTER -->
   <div class="app-footer">
-    KOU.GOAL &nbsp;|&nbsp; @manipress.App
+    KOU-GOAL by manipress
   </div>
 
 </div>
@@ -3110,7 +3110,7 @@ function importData(event) {
       const imported = JSON.parse(e.target.result);
       // Validate basic structure
       if (!imported.goals || !imported.actions) {
-        alert('⚠ このファイルはこうの目標管理システムのバックアップではありません。');
+        alert('⚠ このファイルはKOU-GOAL by manipressのバックアップではありません。');
         return;
       }
       if (!confirm('現在のデータをインポートしたデータで上書きします。よろしいですか？\n\n※ 現在のデータは失われます。先にエクスポートしてバックアップを取ることをお勧めします。')) return;
