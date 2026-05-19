@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="ja" data-theme="yellow" style="background:#fef9e7;">
+<html lang="ja" data-theme="yellow" style="background:#f4f7f3;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -27,8 +27,8 @@
   --info:       #60b4ff;
   --warning:    #ffcc55;
   --hdr-bg:     #0f2044;
-  --body: 'Noto Sans JP', sans-serif;
-  --mono: 'Space Mono', monospace;
+  --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  --mono: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, monospace;
   --font-size-base: 20px;
 }
 /* ===== テーマ定義 ===== */
@@ -189,10 +189,9 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);min-height:1
 .stat-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;}
 .stat-val{font-family:var(--mono);font-size:24px;font-weight:700;margin-bottom:4px;}
 .stat-sub{font-size:14px;color:var(--muted);}
-/* 貯金ページの3列は高さを揃える */
+/* 貯金ページの2列は高さを揃える */
 #savingsStatTotal .stat-card,
-#savingsStatMonth .stat-card,
-#savingsGoalList .stat-card{
+#savingsStatMonth .stat-card{
   height:100%;
   box-sizing:border-box;
   font-size:var(--font-size-base);
@@ -351,14 +350,13 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   /* シミュレーター */
   #simGrid{grid-template-columns:1fr !important;}
 
-  /* 貯金ページ3列 → スマホでもそのまま3列 */
-  #tab-savings > div[style*="grid-template-columns:1fr 1fr 1fr"]{
-    grid-template-columns:1fr 1fr 1fr !important;
+  /* 貯金ページ2列 → スマホでもそのまま2列 */
+  #tab-savings > div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr 1fr !important;
     gap:8px !important;
   }
   #savingsStatTotal .stat-card,
-  #savingsStatMonth .stat-card,
-  #savingsGoalList .stat-card{
+  #savingsStatMonth .stat-card{
     padding:12px 10px;
   }
   #savingsStatTotal .stat-val,
@@ -445,13 +443,180 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 .mp-mo.sel{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;}
 .mp-clear{font-size:13px;color:var(--muted);text-align:center;cursor:pointer;padding:6px 0 0;border-top:1px solid var(--border);}
 .mp-clear:hover{color:var(--danger);}
+
+/* ===== DESIGN REFRESH ===== */
+[data-theme="yellow"] {
+  --bg:#f4f7f3; --surface:#ffffff; --surface2:#edf3ec; --border:#d7e0d4;
+  --text:#17211c; --muted:#607067; --dim:#9aa89f;
+  --accent:#a65f2b; --accent-l:#c27638; --accent-dim:rgba(166,95,43,.11);
+  --success:#28704d; --danger:#b84437; --info:#2b6d8f; --warning:#b5791f;
+  --hdr-bg:rgba(255,255,255,.9); --hdr-text:#17211c; --hdr-muted:#68786f; --hdr-accent:#a65f2b;
+  --card-text:#17211c; --card-muted:#607067;
+}
+body{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.96),rgba(244,247,243,.98) 320px),
+    radial-gradient(circle at 22% -12%,rgba(43,109,143,.08),transparent 380px),
+    radial-gradient(circle at 90% 4%,rgba(40,112,77,.08),transparent 420px),
+    var(--bg);
+  letter-spacing:0;
+}
+.hdr,.tab-nav{
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 1px 0 rgba(35,24,12,.06);
+}
+.hdr{
+  padding:16px 30px;
+  border-bottom:1px solid rgba(35,24,12,.06);
+  min-height:86px;
+  background-color:#00112e;
+  background-image:linear-gradient(90deg,rgba(0,18,45,.18),rgba(0,18,45,.24)),url("./assets/header-logo.png");
+  background-size:auto 100%;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+.hdr-title{font-size:20px;font-weight:700;letter-spacing:.03em;}
+.hdr-brand-spacer{width:210px;height:42px;}
+.hdr .hdr-date{color:#ffd247;text-shadow:0 1px 4px rgba(0,0,0,.45);}
+.hdr .btn{background:rgba(255,255,255,.92);border-color:rgba(255,255,255,.82);}
+.app-footer{
+  margin-top:34px;
+  min-height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#00112e;
+  background-image:none;
+  color:#d9a51f;
+  font-family:var(--mono);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-shadow:0 1px 3px rgba(0,0,0,.5);
+}
+.tab-nav{
+  padding:0 28px;
+  border-bottom:1px solid rgba(35,24,12,.07);
+}
+.tab-btn{
+  font-size:16px;
+  padding:13px 15px;
+  border-bottom-width:3px;
+  font-weight:700;
+  opacity:.82;
+}
+.tab-btn.active{opacity:1;}
+.main{max-width:1180px;background:transparent;padding:34px 28px 56px;}
+.sec-hdr{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(215,224,212,.9);
+  border-radius:8px;
+  padding:16px 18px;
+  box-shadow:0 14px 38px rgba(67,48,27,.05);
+}
+.sec-title{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:.01em;
+  line-height:1.32;
+  color:var(--text);
+  font-feature-settings:"palt" 1;
+}
+.sec-sub{font-size:13px;color:var(--muted);}
+.g-title{
+  font-weight:700;
+  letter-spacing:.01em;
+  line-height:1.55;
+}
+.modal-title,.month-nav-title{
+  font-weight:760;
+  letter-spacing:.01em;
+}
+.card,.g-card,.stat-card,.rev-entry,.wish-card,.chat-wrap,.month-nav,.rec-row,.act-item,.debt-table-wrap{
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(215,224,212,.94);
+  border-radius:8px;
+  box-shadow:0 18px 42px rgba(67,48,27,.07);
+}
+.card,.g-card,.stat-card{padding:22px;}
+.g-card,.wish-card,.rec-row,.act-item,.debt-table-wrap,.stat-card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;}
+.g-card:hover,.wish-card:hover,.rec-row:hover,.act-item:hover,.stat-card:hover{
+  transform:translateY(-1px);
+  border-color:rgba(166,95,43,.42);
+  box-shadow:0 22px 52px rgba(67,48,27,.1);
+}
+.stat-label,.fl,.debt-table th{
+  letter-spacing:.08em;
+  font-size:11px;
+  color:#68786f;
+}
+.stat-val{font-size:28px;letter-spacing:0;color:var(--text);}
+.stat-sub{font-size:13px;color:var(--muted);}
+.btn,.month-nav-btn,.stab-btn,.font-btn,.mp-trigger,.mp-yr-btn,.mp-mo{
+  border-radius:7px;
+  background:#ffffff;
+  border-color:rgba(215,224,212,.98);
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+}
+.btn:hover,.month-nav-btn:hover,.stab-btn:hover{
+  background:#f4faf3;
+  transform:translateY(-1px);
+}
+.btn-primary{
+  background:#a65f2b;
+  border-color:#a65f2b;
+  color:#fff;
+  box-shadow:0 10px 24px rgba(166,95,43,.18);
+}
+.btn-primary:hover{background:#c27638;border-color:#c27638;color:#fff;}
+.btn-danger{background:#fff7f4;}
+.badge,.cat-badge,.rec-cat{border-radius:999px;padding:3px 9px;}
+.prog-bar,.prog-mini{background:#dfe8dc;}
+.prog-fill,.prog-mini-fill{background:linear-gradient(90deg,#a65f2b,#28704d);}
+.debt-table th{background:#edf3ec;border-bottom:1px solid rgba(215,224,212,.98);}
+.debt-table td{border-bottom:1px solid rgba(215,224,212,.78);}
+.debt-table tr:hover td{background:rgba(40,112,77,.045);}
+.fi,.fs,.ft,.chat-inp{
+  background:#ffffff;
+  border-color:rgba(215,224,212,.98);
+  border-radius:7px;
+}
+.fi:focus,.fs:focus,.ft:focus,.chat-inp:focus{
+  border-color:#a65f2b;
+  box-shadow:0 0 0 3px rgba(166,95,43,.12);
+}
+.modal-overlay{background:rgba(35,24,12,.42);backdrop-filter:blur(6px);}
+.modal,.settings-drawer{
+  background:#ffffff;
+  border-color:rgba(215,224,212,.98);
+  border-radius:8px;
+  box-shadow:0 28px 80px rgba(35,24,12,.22);
+}
+.settings-overlay{background:rgba(35,24,12,.34);backdrop-filter:blur(5px);}
+.empty{
+  background:rgba(255,255,255,.62);
+  border:1px dashed rgba(40,112,77,.26);
+  border-radius:8px;
+}
+@media(max-width:640px){
+  .hdr{padding:12px 14px;min-height:72px;background-position:center;background-size:auto 100%;}
+  .hdr-brand-spacer{width:150px;height:34px;}
+  .app-footer{min-height:72px;font-size:12px;background-size:auto 100%;}
+  .main{padding:18px 12px 42px;}
+  .sec-hdr{padding:14px;}
+  .tab-nav{padding:0 10px;}
+  .tab-btn{font-size:14px;padding:11px 10px;}
+  .sec-title{font-size:22px;}
+  .stat-val{font-size:21px;}
+}
 </style>
 </head>
 <body>
 
 <header class="hdr">
   <div>
-    <div class="hdr-title">KOU.GOAL <span>/ 目標管理システム</span></div>
+    <div class="hdr-brand-spacer" aria-hidden="true"></div>
   </div>
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="hdr-date" id="hdrDate"></div>
@@ -468,7 +633,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
 </nav>
 
 
-<div class="main" style="background:#fef9e7;">
+<div class="main">
 
   <!-- GOALS -->
   <div id="tab-goals" class="tab-panel active">
@@ -499,17 +664,13 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   <!-- SAVINGS -->
   <div id="tab-savings" class="tab-panel">
     <div class="sec-hdr">
-      <div><div class="sec-title">貯金</div><div class="sec-sub">月間収支の「貯蓄」項目から自動集計</div></div>
-      <div style="display:flex;gap:8px;">
-        <button class="btn btn-sm btn-primary" onclick="openSavingsGoalModal()">＋ 目標追加</button>
-        <button class="btn btn-sm" onclick="openSavingsInitModal()">⚙ 初期残高設定</button>
-      </div>
+      <div><div class="sec-title">貯金</div><div class="sec-sub">月間収支の「貯蓄」カテゴリ、または項目名「貯金」などから自動集計</div></div>
+      <button class="btn btn-sm" onclick="openSavingsInitModal()">⚙ 初期残高設定</button>
     </div>
-    <!-- 上段：3列横並び（等幅） -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start;margin-bottom:20px;">
+    <!-- 上段：2列横並び（等幅） -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin-bottom:20px;">
       <div id="savingsStatTotal"></div>
       <div id="savingsStatMonth"></div>
-      <div id="savingsGoalList"></div>
     </div>
     <!-- 月次積立テーブル -->
     <div id="savingsTable"></div>
@@ -588,7 +749,7 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   </div>
 
   <!-- FOOTER -->
-  <div style="text-align:center;padding:28px 16px 20px;font-size:14px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;">
+  <div class="app-footer">
     KOU.GOAL &nbsp;|&nbsp; @manipress.App
   </div>
 
@@ -927,9 +1088,11 @@ tr.exp-paid td:first-child{text-decoration:none;opacity:1;}
   </div>
 </div>
 
+<script src="./public-site-data.js"></script>
 <script>
 // ===== DATA =====
 const DB_KEY = 'kou_goal_v2';
+const PUBLIC_SITE_DATA_IMPORT_ID = 'kou_goal_backup_20260519_desktop';
 let gAccessToken = null; // 互換用（未使用）
 let _syncTimer = null;
 let _syncing   = false;
@@ -978,6 +1141,14 @@ function initDB() {
 }
 
 let db = initDB();
+
+if (window.KOU_PUBLIC_SITE_DATA && db.publicSiteDataImportId !== PUBLIC_SITE_DATA_IMPORT_ID) {
+  db = {
+    ...window.KOU_PUBLIC_SITE_DATA,
+    publicSiteDataImportId: PUBLIC_SITE_DATA_IMPORT_ID
+  };
+  save(db);
+}
 
 // ===== DATA MIGRATION: 4月データ自動注入 =====
 (function injectAprilData() {
@@ -1433,93 +1604,184 @@ function renderSavingsGoals(grandTotal, avgMonthly) {
 }
 
 // ===== SAVINGS =====
+let savingsPage = 0;
+const SAVINGS_PAGE_MONTHS = 12;
+
+function addSavingsYM(ym, delta) {
+  const [y, m] = ym.split('-').map(Number);
+  const d = new Date(y, m - 1 + delta, 1);
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+}
+
+function shiftSavingsPage(delta) {
+  savingsPage = Math.max(0, savingsPage + delta);
+  renderSavings();
+}
+
+function isSavingsRecord(r) {
+  if (!r || r.type !== 'expense') return false;
+  const mid = r.midCat || inferMidCat(r.cat) || '';
+  const cat = r.cat || '';
+  const name = r.name || '';
+  if (mid === '貯蓄') return true;
+  if (['貯金', '投資', 'その他貯蓄'].includes(cat)) return true;
+  return /(貯金|貯蓄|積立|つみたて|投資)/.test(name);
+}
+
 function renderSavings() {
   if (!db.monthly) db.monthly = [];
   const init = db.savingsInit || 0;
+  const thisYM = new Date().toISOString().slice(0, 7);
+  const pageStart = addSavingsYM(thisYM, savingsPage * SAVINGS_PAGE_MONTHS);
+  const pageEnd = addSavingsYM(pageStart, SAVINGS_PAGE_MONTHS - 1);
+  const pageMonths = Array.from({length:SAVINGS_PAGE_MONTHS}, (_, i) => addSavingsYM(pageStart, i));
+  const fmtYMRange = (from, to) => {
+    const [fy, fm] = from.split('-').map(Number);
+    const [ty, tm] = to.split('-').map(Number);
+    return `${fy}年${fm}月〜${ty}年${tm}月`;
+  };
 
-  // 貯蓄レコードを月別に集計（midCat === '貯蓄' かつ チェック済み）
-  const byMonth = {};
+  // 貯蓄レコードを月別に集計。実績はチェック済み、予想は未チェック予定も含める。
+  const monthSet = new Set();
+  pageMonths.forEach(ym => monthSet.add(ym));
   db.monthly.forEach(r => {
-    if (r.type !== 'expense') return;
-    const mid = r.midCat || inferMidCat(r.cat) || '';
-    if (mid !== '貯蓄') return;
+    if (!isSavingsRecord(r)) return;
     if (r.fixed) {
-      // 固定項目：paid_YYYY-MM キーでその月のチェックを確認
-      if (!r['paid_' + ym]) return;
+      const from = r.fixedFrom || r.date?.slice(0, 7) || thisYM;
+      const to = r.fixedTo || pageEnd;
+      const loopStart = from;
+      const loopEnd = to < pageEnd ? to : pageEnd;
+      for (let ym = loopStart, guard = 0; ym <= loopEnd && guard < 600; ym = addSavingsYM(ym, 1), guard++) {
+        monthSet.add(ym);
+      }
+      Object.keys(r).forEach(k => {
+        if (k.startsWith('paid_') && r[k]) monthSet.add(k.replace('paid_', ''));
+      });
     } else {
-      if (!r.paid) return;
+      const ym = r.date ? r.date.slice(0, 7) : '';
+      if (ym) monthSet.add(ym);
     }
-    const ym = r.date ? r.date.slice(0, 7) : '';
-    if (!ym) return;
-    if (!byMonth[ym]) byMonth[ym] = { total: 0, items: [] };
-    byMonth[ym].total += r.amount || 0;
-    byMonth[ym].items.push(r);
   });
 
-  const months = Object.keys(byMonth).sort();
-  const totalSaved = months.reduce((s, ym) => s + byMonth[ym].total, 0);
+  const byMonth = {};
+  [...monthSet].sort().forEach(ym => {
+    const savingsRecs = getMonthRecords(ym).filter(r => isSavingsRecord(r));
+    if (!savingsRecs.length) return;
+    const m = byMonth[ym] = { actual: 0, planned: 0, actualItems: [], pendingItems: [] };
+    savingsRecs.forEach(r => {
+      const realId = r._synthetic ? r.fixedRef : r.id;
+      const realRec = db.monthly.find(x => x.id === realId) || r;
+      const amt = r.amount || 0;
+      const paid = getRecordPaid(realRec, ym);
+      m.planned += amt;
+      if (paid) {
+        m.actual += amt;
+        m.actualItems.push(r);
+      } else {
+        m.pendingItems.push(r);
+      }
+    });
+  });
+
+  const allMonths = Object.keys(byMonth).sort();
+  const months = pageMonths.filter(ym => byMonth[ym] && byMonth[ym].planned > 0);
+  const totalSaved = allMonths.reduce((s, ym) => s + byMonth[ym].actual, 0);
+  const plannedThroughPage = allMonths.filter(ym => ym <= pageEnd).reduce((s, ym) => s + byMonth[ym].planned, 0);
   const grandTotal = init + totalSaved;
-  const thisYM = new Date().toISOString().slice(0, 7);
-  const thisMonth = byMonth[thisYM]?.total || 0;
-  const avg = months.length ? Math.round(totalSaved / months.length) : 0;
+  const forecastTotal = init + plannedThroughPage;
+  const pendingTotal = pageMonths.reduce((s, ym) => {
+    const m = byMonth[ym];
+    return s + (m ? Math.max(0, m.planned - m.actual) : 0);
+  }, 0);
+  const actualMonths = allMonths.filter(ym => byMonth[ym].actual > 0);
+  const plannedMonths = pageMonths.filter(ym => byMonth[ym]?.planned > 0);
+  const thisMonth = byMonth[thisYM]?.actual || 0;
+  const thisMonthPlan = byMonth[thisYM]?.planned || 0;
+  const thisMonthPending = Math.max(0, thisMonthPlan - thisMonth);
+  const avg = actualMonths.length ? Math.round(totalSaved / actualMonths.length) : 0;
+  const avgPlan = plannedMonths.length ? Math.round(pageMonths.reduce((s, ym) => s + (byMonth[ym]?.planned || 0), 0) / plannedMonths.length) : 0;
 
   document.getElementById('savingsStatTotal').innerHTML = `
     <div class="stat-card">
-      <div class="stat-label">貯金総額（累計）</div>
+      <div class="stat-label">貯金総額（実績）</div>
       <div class="stat-val">¥${grandTotal.toLocaleString()}</div>
-      <div class="stat-sub">初期残高 ¥${init.toLocaleString()}</div>
+      <div class="stat-sub">表示中の予想残高 ¥${forecastTotal.toLocaleString()}</div>
+      <div class="stat-sub" style="color:var(--info);">表示中の未チェック予定 +¥${pendingTotal.toLocaleString()}</div>
     </div>`;
   document.getElementById('savingsStatMonth').innerHTML = `
     <div class="stat-card">
       <div class="stat-label">今月の貯蓄</div>
       <div class="stat-val">¥${thisMonth.toLocaleString()}</div>
-      <div class="stat-sub">月平均 ¥${avg.toLocaleString()}</div>
+      <div class="stat-sub">今月予定 +¥${thisMonthPlan.toLocaleString()}</div>
+      <div class="stat-sub" style="color:${thisMonthPending ? 'var(--warning)' : 'var(--success)'};">これから +¥${thisMonthPending.toLocaleString()} / 予定平均 +¥${avgPlan.toLocaleString()}</div>
     </div>`;
 
   if (!months.length) {
     document.getElementById('savingsTable').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+        <button class="btn btn-sm" onclick="shiftSavingsPage(-1)" ${savingsPage===0?'disabled style="opacity:.45;cursor:not-allowed;"':''}>‹ 前の1年</button>
+        <div style="font-family:var(--mono);font-weight:700;color:var(--accent);">${fmtYMRange(pageStart, pageEnd)}</div>
+        <button class="btn btn-sm btn-primary" onclick="shiftSavingsPage(1)">次の1年 ›</button>
+      </div>
       <div class="empty"><div class="ico">🏦</div>
-        月間収支の支出に「貯蓄」カテゴリの項目を追加すると自動で積み上がります
+        この期間に表示できる貯金予定はありません
       </div>`;
-    renderSavingsGoals(grandTotal, avg);
     mobileifyTables();
     return;
   }
 
   // 累計を計算しながらテーブル生成
-  let running = init;
+  let actualRunning = init;
+  let forecastRunning = init;
+  allMonths.filter(ym => ym < pageStart).forEach(ym => {
+    actualRunning += byMonth[ym].actual;
+    forecastRunning += byMonth[ym].planned;
+  });
   const rows = months.map(ym => {
     const m = byMonth[ym];
-    running += m.total;
+    actualRunning += m.actual;
+    forecastRunning += m.planned;
     const [y, mo] = ym.split('-');
     const isCurrent = ym === thisYM;
-    const itemList = m.items.map(r => esc(r.name)).join('・');
+    const actualList = m.actualItems.map(r => esc(r.name)).join('・');
+    const pendingList = m.pendingItems.map(r => esc(r.name)).join('・');
+    const itemList = [
+      actualList ? `実績：${actualList}` : '',
+      pendingList ? `予定：${pendingList}` : ''
+    ].filter(Boolean).join('<br>');
+    const pending = Math.max(0, m.planned - m.actual);
     return `<tr style="${isCurrent ? 'background:var(--accent-dim);' : ''}">
       <td style="font-family:var(--mono);font-weight:700;white-space:nowrap;color:${isCurrent?'var(--accent)':''}">
         ${y}年${parseInt(mo)}月${isCurrent ? ' <span style="font-size:12px;">← 今月</span>' : ''}
       </td>
-      <td class="mono" style="color:var(--success);text-align:right;">+¥${m.total.toLocaleString()}</td>
+      <td class="mono" style="color:var(--success);text-align:right;">+¥${m.actual.toLocaleString()}</td>
+      <td class="mono" style="color:${pending ? 'var(--info)' : 'var(--muted)'};text-align:right;">+¥${m.planned.toLocaleString()}${pending ? `<div style="font-size:12px;color:var(--warning);">残 +¥${pending.toLocaleString()}</div>` : ''}</td>
       <td style="font-size:14px;color:var(--card-muted,var(--muted));">${itemList}</td>
-      <td class="mono" style="color:var(--info);font-weight:700;text-align:right;">¥${running.toLocaleString()}</td>
+      <td class="mono" style="color:var(--info);font-weight:700;text-align:right;">¥${forecastRunning.toLocaleString()}<div style="font-size:12px;color:var(--muted);">実績 ¥${actualRunning.toLocaleString()}</div></td>
     </tr>`;
-  }).reverse();
+  });
 
   document.getElementById('savingsTable').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+      <button class="btn btn-sm" onclick="shiftSavingsPage(-1)" ${savingsPage===0?'disabled style="opacity:.45;cursor:not-allowed;"':''}>‹ 前の1年</button>
+      <div style="font-family:var(--mono);font-weight:700;color:var(--accent);">${fmtYMRange(pageStart, pageEnd)}</div>
+      <button class="btn btn-sm btn-primary" onclick="shiftSavingsPage(1)">次の1年 ›</button>
+    </div>
     <div class="debt-table-wrap">
       <table class="debt-table">
         <thead>
           <tr>
             <th>月</th>
-            <th style="text-align:right;">今月の貯蓄</th>
+            <th style="text-align:right;">実績増加</th>
+            <th style="text-align:right;">予定増加</th>
             <th>内訳</th>
-            <th style="text-align:right;">累計残高</th>
+            <th style="text-align:right;">予想残高</th>
           </tr>
         </thead>
         <tbody>${rows.join('')}</tbody>
       </table>
     </div>`;
 
-  renderSavingsGoals(grandTotal, avg);
   mobileifyTables();
 }
 
@@ -2191,7 +2453,7 @@ function saveSettings() { localStorage.setItem(SETTINGS_KEY, JSON.stringify(appS
 const THEME_BG = {
   'navy':       '#08132a',
   'light-navy': '#e8f4ff',
-  'yellow':     '#fef9e7',
+  'yellow':     '#f4f7f3',
   'pink':       '#fdf0f6',
   'gray':       '#f2f2f2',
 };
@@ -2200,11 +2462,11 @@ function applySettings() {
   const theme = appSettings.theme || 'yellow';
   document.documentElement.setAttribute('data-theme', theme);
   // スマホ含め確実に背景色を反映
-  const bg = THEME_BG[theme] || '#fef9e7';
+  const bg = THEME_BG[theme] || '#f4f7f3';
   document.documentElement.style.backgroundColor = bg;
   document.body.style.backgroundColor = bg;
   const mainEl = document.querySelector('.main');
-  if (mainEl) mainEl.style.backgroundColor = bg;
+  if (mainEl) mainEl.style.backgroundColor = 'transparent';
   document.querySelectorAll('.theme-swatch').forEach(s => {
     s.classList.toggle('active', s.dataset.theme === theme);
   });
@@ -2808,7 +3070,7 @@ function toggleExpPaid(id) {
   renderMonthly();
   const mid = r.type === 'expense' ? (r.midCat || inferMidCat(r.cat)) : '';
   if (mid === '返済') renderDebt();
-  if (mid === '貯蓄') renderSavings();
+  if (isSavingsRecord(r)) renderSavings();
 }
 
 function delMthRecord(id) {
